@@ -1,0 +1,14 @@
+@use "../../styles" as *;
+
+.box {
+  align-items: center;
+  background-color: $opac;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}

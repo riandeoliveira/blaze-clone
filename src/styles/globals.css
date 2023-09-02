@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}

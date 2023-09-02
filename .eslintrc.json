@@ -1,0 +1,87 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended"
+  ],
+  "noInlineConfig": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "react"
+  ],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/explicit-member-accessibility": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/prefer-for-of": "error",
+    "eqeqeq": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "max-classes-per-file": "error",
+    "max-lines": [
+      "error",
+      1000
+    ],
+    "max-params": [
+      "error",
+      3
+    ],
+    "no-alert": "warn",
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-empty": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "react/button-has-type": "error",
+    "react/destructuring-assignment": [
+      "error",
+      "always"
+    ],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "react/hook-use-state": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-closing-tag-location": "error",
+    "semi": [
+      "error",
+      "always"
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

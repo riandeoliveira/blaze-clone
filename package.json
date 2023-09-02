@@ -1,0 +1,55 @@
+{
+  "name": "blaze-clone",
+  "description": "Clone da Blaze",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "homepage": "<PROJECT_URL>",
+  "main": "src/main.tsx",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "eslint": "eslint --fix src/**/*.{js,jsx,ts,tsx} vite.config.ts",
+    "lint": "npm run eslint & npm run prettier",
+    "prebuild": "npm run lint",
+    "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx} vite.config.ts",
+    "start": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "formik": "^2.4.3",
+    "mobx": "^6.10.0",
+    "mobx-react-lite": "^4.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "uuid": "^9.0.0",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "autoprefixer": "^10.4.15",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.29",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "typescript-plugin-css-modules": "^5.0.1",
+    "vite": "^4.4.5",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.34.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riandeoliveira/BlazeClone"
+  },
+  "keywords": []
+}
