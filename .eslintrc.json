@@ -52,6 +52,7 @@
     "no-debugger": "warn",
     "no-empty": "warn",
     "no-multiple-empty-lines": "warn",
+    "no-undef": "warn",
     "no-var": "error",
     "prefer-const": "error",
     "prefer-template": "error",
