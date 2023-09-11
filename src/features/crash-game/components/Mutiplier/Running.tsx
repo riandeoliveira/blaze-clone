@@ -1,4 +1,5 @@
 import { crashGameStore } from "features/crash-game/store";
+import { crashGameTool } from "features/crash-game/tools";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
 import { Rect, Text } from "react-konva";
@@ -9,6 +10,21 @@ export const Running = observer((): ReactElement => {
   const { multiplier } = crashGameStore;
 
   useEffect(() => {
+    const multiplierLimit: number = crashGameTool.generateCrashPoint();
+
+    crashGameStore.setLimit(multiplierLimit);
+  }, []);
+
+  useEffect(() => {
+    if (crashGameStore.multiplier >= crashGameStore.limit) {
+      crashGameStore.setIsCrashed(true);
+
+      setTimeout(() => {
+        crashGameStore.reset();
+        crashGameStore.setIsLoading(true);
+      }, 5000);
+    }
+
     setMultiplierPow((previousMultiplierPow) => {
       return previousMultiplierPow + 0.01;
     });

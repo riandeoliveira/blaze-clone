@@ -1,3 +1,4 @@
+import { crashGameStore } from "features/crash-game/store";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
 import { Rect, Text } from "react-konva";
@@ -36,6 +37,12 @@ export const LoadingBar = observer((): ReactElement => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (counter.seconds === 0 && counter.milliseconds === 0) {
+      crashGameStore.setIsLoading(false);
+    }
+  }, [counter]);
 
   return (
     <>

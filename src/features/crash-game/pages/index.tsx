@@ -1,19 +1,15 @@
 import { Header } from "components/Header";
 import { observer } from "mobx-react-lite";
-import { useEffect, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { Layer, Stage } from "react-konva";
+import { LoadingBar } from "../components/LoadingBar";
 import { Multiplier } from "../components/Mutiplier";
+import { Rocket } from "../components/Rocket";
 import { crashGameStore } from "../store";
 import styles from "./styles.module.scss";
 
 export const Crash = observer((): ReactElement => {
-  const { isCrashed, multiplier } = crashGameStore;
-
-  useEffect(() => {
-    if (multiplier >= 2) {
-      crashGameStore.setIsCrashed(true);
-    }
-  }, [multiplier]);
+  const { isCrashed, isLoading } = crashGameStore;
 
   return (
     <>
@@ -25,9 +21,14 @@ export const Crash = observer((): ReactElement => {
               <div className={styles.container}>
                 <Stage width={679} height={383}>
                   <Layer>
-                    {/* <Rocket /> */}
-                    {isCrashed ? <Multiplier.Crashed /> : <Multiplier.Running />}
-                    {/* <LoadingBar /> */}
+                    {isLoading ? (
+                      <LoadingBar />
+                    ) : (
+                      <>
+                        <Rocket />
+                        {isCrashed ? <Multiplier.Crashed /> : <Multiplier.Running />}
+                      </>
+                    )}
                   </Layer>
                 </Stage>
               </div>
