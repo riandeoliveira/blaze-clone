@@ -1,0 +1,26 @@
+@use "../../styles" as *;
+
+.wallet {
+  align-items: center;
+  border: 1px solid $separator;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 4px;
+  height: 40px;
+  letter-spacing: 1px;
+  padding: 0 16px;
+}
+
+.wallet_container {}
+
+.currency {
+  font-family: $secondary-font, $default-font;
+  font-size: 14px;
+}
+
+.icon {
+  width: 16px;
+}
