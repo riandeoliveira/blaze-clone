@@ -1,6 +1,6 @@
 import { App } from "components/App";
 import ReactDOM from "react-dom/client";
-import "styles/globals.css";
+import "styles/_global.scss";
 
 const rootElement = document.querySelector("#root") as Element;
 

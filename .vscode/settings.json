@@ -80,6 +80,15 @@
     "properties-order": "alphabetical"
   },
   //
+  // Stylelint
+  //
+  "stylelint.validate": [
+    "css",
+    "postcss",
+    "sass",
+    "scss"
+  ],
+  //
   // TypeScript
   //
   "typescript.suggest.completeFunctionCalls": true,

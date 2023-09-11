@@ -1,12 +1,12 @@
 {
   "recommendations": [
-    "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "mikestead.dotenv",
     "naumovs.color-highlight",
+    "stylelint.vscode-stylelint",
     "visualstudioexptteam.vscodeintellicode",
     "wix.vscode-import-cost"
   ]
