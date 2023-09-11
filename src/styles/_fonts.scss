@@ -1,0 +1,11 @@
+@font-face {
+  font-family: SofiaPro;
+  font-weight: 500;
+  src: url("fonts/sofiapro-light.otf") format("opentype");
+}
+
+$primary-font: "SofiaPro";
+$secondary-font: "Roboto";
+$default-font: sans-serif;
+
+$group-font: $primary-font, $secondary-font, $default-font;
