@@ -6,4 +6,8 @@ export class CrashGameTool {
 
     return crashPoint;
   }
+
+  public toDisplay(crashValue: number): string {
+    return `${crashValue.toFixed(2).replace(".", ",")}X`;
+  }
 }

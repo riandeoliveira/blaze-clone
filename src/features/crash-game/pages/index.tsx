@@ -2,15 +2,14 @@ import { Header } from "components/Header";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
 import { Layer, Stage } from "react-konva";
+import { crashGame } from "..";
 import { LoadingBar } from "../components/LoadingBar";
 import { Multiplier } from "../components/Mutiplier";
+import { PreviousCrashList } from "../components/PreviousCrashList";
 import { Rocket } from "../components/Rocket";
-import { crashGameStore } from "../store";
 import styles from "./styles.module.scss";
 
 export const Crash = observer((): ReactElement => {
-  const { isCrashed, isLoading } = crashGameStore;
-
   return (
     <>
       <Header />
@@ -18,21 +17,26 @@ export const Crash = observer((): ReactElement => {
         <div className={styles.main_container}>
           <div className={styles.game_controller}>
             <div className={styles.crash_controller}>
-              <div className={styles.container}>
+              <div className={styles.controller_container}>
                 <Stage width={679} height={383}>
                   <Layer>
-                    {isLoading ? (
+                    {crashGame.store.isLoading ? (
                       <LoadingBar />
                     ) : (
                       <>
                         <Rocket />
-                        {isCrashed ? <Multiplier.Crashed /> : <Multiplier.Running />}
+                        {crashGame.store.isCrashed ? (
+                          <Multiplier.Crashed />
+                        ) : (
+                          <Multiplier.Running />
+                        )}
                       </>
                     )}
                   </Layer>
                 </Stage>
               </div>
             </div>
+            <PreviousCrashList />
           </div>
         </div>
       </main>

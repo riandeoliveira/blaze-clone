@@ -5,12 +5,14 @@ export class CrashGameStore {
   public isLoading: boolean;
   public limit: number;
   public multiplier: number;
+  public previousCrashList: number[];
 
   public constructor() {
     this.isCrashed = false;
     this.isLoading = false;
     this.limit = 0;
     this.multiplier = 1.0;
+    this.previousCrashList = [];
 
     makeAutoObservable(this);
   }
@@ -36,5 +38,9 @@ export class CrashGameStore {
 
   public setMultiplier(multiplier: number): void {
     this.multiplier = multiplier;
+  }
+
+  public setPreviousCrashList(previousCrashList: number[]): void {
+    this.previousCrashList = previousCrashList;
   }
 }

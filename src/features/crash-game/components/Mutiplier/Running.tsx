@@ -11,7 +11,7 @@ export const Running = observer((): ReactElement => {
     <>
       <Rect x={250} y={150} width={180} height={80} fill="#1b2430" cornerRadius={4} />
       <Text
-        text={crashGame.getFormattedMultiplier()}
+        text={crashGame.tools.toDisplay(crashGame.store.multiplier)}
         fill="#fff"
         fontFamily="Consolas"
         fontVariant="bold"

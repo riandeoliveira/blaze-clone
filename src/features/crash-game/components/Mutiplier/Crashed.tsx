@@ -9,7 +9,7 @@ export const Crashed = observer((): ReactElement => {
       <Rect x={250} y={140} width={180} height={80} fill="#f12c4c" cornerRadius={4} />
       <Rect x={250} y={217} width={180} height={40} fill="#c61834" cornerRadius={4} />
       <Text
-        text={crashGame.getFormattedMultiplier()}
+        text={crashGame.tools.toDisplay(crashGame.store.multiplier)}
         fill="#fff"
         fontFamily="Consolas"
         fontVariant="bold"
