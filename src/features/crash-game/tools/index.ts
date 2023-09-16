@@ -7,5 +7,3 @@ export class CrashGameTool {
     return crashPoint;
   }
 }
-
-export const crashGameTool = new CrashGameTool();

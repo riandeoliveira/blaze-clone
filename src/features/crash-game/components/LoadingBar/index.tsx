@@ -1,48 +1,10 @@
-import { crashGameStore } from "features/crash-game/store";
+import { useLoadingBar } from "features/crash-game/hooks/useLoadingBar";
 import { observer } from "mobx-react-lite";
-import { useEffect, useState, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { Rect, Text } from "react-konva";
 
 export const LoadingBar = observer((): ReactElement => {
-  const [progressBarWidth, setProgressBarWidth] = useState(663);
-  const [counter, setCounter] = useState({ seconds: 6, milliseconds: 8 });
-
-  useEffect(() => {
-    const startTime = performance.now();
-    let animationFrameID: number;
-
-    const updateProgressBar = (): void => {
-      const currentTime = performance.now();
-      const elapsedTime = currentTime - startTime;
-      const remainingTime = Math.max(0, 6000 - elapsedTime);
-      const newProgressBarWidth = (remainingTime / 6000) * 663;
-
-      setProgressBarWidth(newProgressBarWidth);
-      const formattedMilliseconds = Math.floor((remainingTime % 1000) / 100) * 100;
-      setCounter({
-        seconds: Math.floor(remainingTime / 1000),
-        milliseconds: formattedMilliseconds,
-      });
-
-      if (remainingTime > 0) {
-        animationFrameID = requestAnimationFrame(updateProgressBar);
-      }
-    };
-
-    updateProgressBar();
-
-    return () => {
-      if (animationFrameID) {
-        cancelAnimationFrame(animationFrameID);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (counter.seconds === 0 && counter.milliseconds === 0) {
-      crashGameStore.setIsLoading(false);
-    }
-  }, [counter]);
+  const { progressBarWidth, counter } = useLoadingBar();
 
   return (
     <>

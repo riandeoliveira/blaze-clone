@@ -1,6 +1,6 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
-class CrashGameStore {
+export class CrashGameStore {
   public isCrashed: boolean;
   public isLoading: boolean;
   public limit: number;
@@ -12,18 +12,7 @@ class CrashGameStore {
     this.limit = 0;
     this.multiplier = 1.0;
 
-    makeAutoObservable(this, {
-      isCrashed: observable,
-      isLoading: observable,
-      limit: observable,
-      multiplier: observable,
-
-      reset: action,
-      setIsCrashed: action,
-      setIsLoading: action,
-      setLimit: action,
-      setMultiplier: action,
-    });
+    makeAutoObservable(this);
   }
 
   public reset(): void {
@@ -49,5 +38,3 @@ class CrashGameStore {
     this.multiplier = multiplier;
   }
 }
-
-export const crashGameStore = new CrashGameStore();
