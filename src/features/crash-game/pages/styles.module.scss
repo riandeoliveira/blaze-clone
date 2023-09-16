@@ -9,20 +9,8 @@
   padding-top: 48px;
 }
 
-.game_controller {
+.game {
   background-color: $background-two;
   border-radius: 4px;
   width: 747px;
-}
-
-.crash_controller {
-  display: flex;
-  flex-direction: column;
-  padding: 14px;
-}
-
-.controller_container {
-  background-color: $background;
-  border-radius: 4px;
-  padding: 20px;
 }
