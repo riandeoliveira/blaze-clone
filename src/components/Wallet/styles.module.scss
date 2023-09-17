@@ -4,7 +4,7 @@
   align-items: center;
   border: 1px solid $separator;
   border-radius: 4px;
-  color: #fff;
+  color: $white;
   display: flex;
   font-size: 14px;
   font-weight: 500;
@@ -13,8 +13,6 @@
   letter-spacing: 1px;
   padding: 0 16px;
 }
-
-.wallet_container {}
 
 .currency {
   font-family: $secondary-font, $default-font;

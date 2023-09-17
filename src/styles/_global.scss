@@ -11,6 +11,21 @@
   text-decoration: none;
 }
 
+::selection {
+  background-color: $light-blue;
+  color: $black;
+}
+
 body {
   background-color: $background;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input {
+  appearance: textfield;
 }

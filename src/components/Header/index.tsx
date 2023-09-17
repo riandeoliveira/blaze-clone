@@ -1,5 +1,4 @@
 import { Icon } from "assets";
-import { Button } from "components/Button";
 import { Navbar } from "components/Navbar";
 import { Wallet } from "components/Wallet";
 import { observer } from "mobx-react-lite";
@@ -23,7 +22,9 @@ export const Header = observer((): ReactElement => {
               <Icon.Profile className={styles.icon} />
             </div>
             <Wallet />
-            <Button>Depositar</Button>
+            <button type="button" className={styles.button}>
+              Depositar
+            </button>
           </div>
         </div>
       </header>

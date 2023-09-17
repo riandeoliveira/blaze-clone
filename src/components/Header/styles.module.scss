@@ -39,3 +39,7 @@
 .icon {
   cursor: pointer;
 }
+
+.button {
+  @extend .button_component;
+}

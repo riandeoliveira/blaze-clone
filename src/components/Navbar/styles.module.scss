@@ -22,11 +22,11 @@
   transition: border 0.5s ease;
 
   &:hover,
-  &[data-selected] {
+  &[data-selected="true"] {
     border-color: $red;
 
     .text {
-      color: #fff;
+      color: $white;
     }
   }
 }
@@ -42,6 +42,6 @@
 
 .icon {
   &:hover>g>path {
-    fill: #fff;
+    fill: $white;
   }
 }

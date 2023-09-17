@@ -1,0 +1,48 @@
+@use "../../../../styles" as *;
+
+.container {
+  align-items: center;
+  background-color: $background;
+  border-radius: 4px;
+  display: flex;
+  gap: 4px;
+  height: 48px;
+  padding: 6px 16px;
+}
+
+.placeholder {
+  color: $light-grey;
+  font-size: 10px;
+  font-weight: 600;
+  position: absolute;
+  transition: margin 0.25s ease, transform 0.25s ease;
+}
+
+.placeholder_top {
+  margin-left: -3px;
+  margin-top: -25px;
+  transform: scale(0.8);
+}
+
+.field {
+  background-color: transparent;
+  color: $white;
+  font-size: 12px;
+  height: 100%;
+  outline: 0;
+  width: 100%;
+
+  &[data-filled="true"]+.placeholder {
+    @extend .placeholder_top;
+  }
+
+  &:focus+.placeholder {
+    @extend .placeholder_top;
+  }
+}
+
+.currency {
+  color: $light-grey;
+  font-size: 14px;
+  font-weight: 600;
+}

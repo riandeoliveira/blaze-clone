@@ -12,5 +12,9 @@
 .game {
   background-color: $background-two;
   border-radius: 4px;
+  display: flex;
+}
+
+.display {
   width: 747px;
 }

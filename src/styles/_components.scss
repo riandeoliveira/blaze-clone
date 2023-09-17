@@ -1,9 +1,9 @@
-@use "../../styles" as *;
+@use "./colors" as *;
 
-.button {
+.button_component {
   background-color: $red;
   border-radius: 4px;
-  color: #fff;
+  color: $white;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
@@ -11,6 +11,10 @@
   letter-spacing: 0.4px;
   transition: background-color 0.5s ease;
   width: 98px;
+
+  &:active {
+    transform: translate(0, 1px);
+  }
 
   &:hover {
     background-color: $dark-red;

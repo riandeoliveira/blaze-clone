@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import type { TabModeType } from "../types";
 
 export class CrashGameStore {
   public isCrashed: boolean;
@@ -6,6 +7,7 @@ export class CrashGameStore {
   public limit: number;
   public multiplier: number;
   public previousCrashList: number[];
+  public tabMode: TabModeType;
 
   public constructor() {
     this.isCrashed = false;
@@ -13,6 +15,7 @@ export class CrashGameStore {
     this.limit = 0;
     this.multiplier = 1.0;
     this.previousCrashList = [];
+    this.tabMode = "normal";
 
     makeAutoObservable(this);
   }
@@ -42,5 +45,9 @@ export class CrashGameStore {
 
   public setPreviousCrashList(previousCrashList: number[]): void {
     this.previousCrashList = previousCrashList;
+  }
+
+  public setTabMode(tabMode: TabModeType): void {
+    this.tabMode = tabMode;
   }
 }

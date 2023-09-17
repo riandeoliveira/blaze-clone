@@ -1,6 +1,7 @@
 import { Header } from "components/Header";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
+import { Controller } from "../components/Controller";
 import { Display } from "../components/Display";
 import { PreviousCrashList } from "../components/PreviousCrashList";
 import styles from "./styles.module.scss";
@@ -12,8 +13,11 @@ export const Crash = observer((): ReactElement => {
       <main className={styles.main}>
         <div className={styles.main_container}>
           <div className={styles.game}>
-            <Display />
-            <PreviousCrashList />
+            <Controller />
+            <div className={styles.display}>
+              <Display />
+              <PreviousCrashList />
+            </div>
           </div>
         </div>
       </main>
