@@ -1,17 +1,20 @@
 import { makeAutoObservable } from "mobx";
+import type { LocalStorageKeys } from "types/local-storage";
 
 export class LocalStorageStore {
   public accessToken: string | null;
   public previousCrashList: number[] | null;
+  public walletBalance: number | null;
 
   public constructor() {
     this.accessToken = this.getItem("access_token");
     this.previousCrashList = this.getItem("previous_crash_list");
+    this.walletBalance = this.getItem("wallet_balance");
 
     makeAutoObservable(this);
   }
 
-  public getItem<T>(key: string): T | null {
+  public getItem<T>(key: LocalStorageKeys): T | null {
     const storageItem: string | null = localStorage.getItem(key);
 
     if (storageItem) return JSON.parse(storageItem);
@@ -19,7 +22,7 @@ export class LocalStorageStore {
     return null;
   }
 
-  public setItem<T>(key: string, value: T): void {
+  public setItem<T>(key: LocalStorageKeys, value: T): void {
     localStorage.setItem(key, JSON.stringify(value, null, 2));
   }
 
@@ -39,5 +42,11 @@ export class LocalStorageStore {
     } else {
       this.setPreviousCrashList([value]);
     }
+  }
+
+  public setWalletBalance(walletBalance: number | null): void {
+    this.setItem("wallet_balance", walletBalance);
+
+    this.walletBalance = this.getItem("wallet_balance");
   }
 }
