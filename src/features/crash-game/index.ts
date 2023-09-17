@@ -14,7 +14,7 @@ class CrashGame {
 
     const currentCrashPoint = Number(this.store.multiplier.toFixed(2));
 
-    this.localStorageStore.insert(currentCrashPoint);
+    this.localStorageStore.addToWalletBalance(currentCrashPoint);
   }
 
   public checkIfCanCrash(): boolean {

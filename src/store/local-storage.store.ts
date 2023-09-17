@@ -2,16 +2,20 @@ import { makeAutoObservable } from "mobx";
 import type { LocalStorageKeys } from "types/local-storage";
 
 export class LocalStorageStore {
-  public accessToken: string | null;
-  public previousCrashList: number[] | null;
-  public walletBalance: number | null;
+  public previousCrashList: number[];
+  public walletBalance: number;
 
   public constructor() {
-    this.accessToken = this.getItem("access_token");
-    this.previousCrashList = this.getItem("previous_crash_list");
-    this.walletBalance = this.getItem("wallet_balance");
+    this.previousCrashList = this.getOrCreateItem<number[]>("previous_crash_list", []);
+    this.walletBalance = this.getOrCreateItem<number>("wallet_balance", 0);
 
     makeAutoObservable(this);
+  }
+
+  public addToWalletBalance(value: number): void {
+    const updatedList = [value, ...this.previousCrashList];
+
+    this.setPreviousCrashList(updatedList);
   }
 
   public getItem<T>(key: LocalStorageKeys): T | null {
@@ -22,31 +26,27 @@ export class LocalStorageStore {
     return null;
   }
 
+  private getOrCreateItem<T>(key: LocalStorageKeys, defaultValue: T): T {
+    const storageItem: T | null = this.getItem<T>(key);
+
+    if (storageItem) return storageItem;
+
+    this.setItem(key, defaultValue);
+
+    return defaultValue;
+  }
+
   public setItem<T>(key: LocalStorageKeys, value: T): void {
-    localStorage.setItem(key, JSON.stringify(value, null, 2));
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
-  public setAccessToken(accessToken: string | null): void {
-    this.setItem("access_token", accessToken);
-  }
-
-  public setPreviousCrashList(previousCrashList: number[] | null): void {
+  public setPreviousCrashList(previousCrashList: number[]): void {
     this.setItem("previous_crash_list", previousCrashList);
-
-    this.previousCrashList = this.getItem("previous_crash_list");
+    this.previousCrashList = previousCrashList;
   }
 
-  public insert(value: number): void {
-    if (this.previousCrashList) {
-      this.setPreviousCrashList([value, ...this.previousCrashList]);
-    } else {
-      this.setPreviousCrashList([value]);
-    }
-  }
-
-  public setWalletBalance(walletBalance: number | null): void {
+  public setWalletBalance(walletBalance: number): void {
     this.setItem("wallet_balance", walletBalance);
-
-    this.walletBalance = this.getItem("wallet_balance");
+    this.walletBalance = walletBalance;
   }
 }
