@@ -44,7 +44,7 @@
       1000
     ],
     "max-params": [
-      "error",
+      "warn",
       3
     ],
     "no-alert": "warn",

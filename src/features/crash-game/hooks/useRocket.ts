@@ -36,10 +36,10 @@ export const useRocket = () => {
   }, [isAnimationRunning]);
 
   useEffect(() => {
-    if (crashGame.store.isCrashed) {
+    if (crashGame.statusStore.isCrashed) {
       stopAnimation();
     }
-  }, [crashGame.store.isCrashed]);
+  }, [crashGame.statusStore.isCrashed]);
 
   const stopAnimation = () => {
     setIsAnimationRunning(false);

@@ -9,7 +9,7 @@ export const PreviousCrashList = observer((): ReactElement => {
       <span className={styles.label}>Anterior</span>
       <div className={styles.list_container}>
         <div className={styles.list}>
-          {crashGame.localStorageStore.previousCrashList?.map((crashPoint, index) => (
+          {crashGame.localStorageStore.previousCrashList.map((crashPoint, index) => (
             <span className={styles.crash_point} data-crash-good={crashPoint >= 2} key={index}>
               {crashPoint.toFixed(2).replace(".", ",")}X
             </span>

@@ -55,17 +55,18 @@
   font-size: 12px;
 }
 
-.secondary_fields {
-  display: flex;
-  gap: 10px;
-}
-
 .button {
   @extend .button_component;
 
   height: 48px;
   letter-spacing: normal;
   width: 100%;
+}
+
+
+.secondary_fields {
+  display: flex;
+  gap: 10px;
 }
 
 .free_rounds {

@@ -13,12 +13,12 @@ export const Display = observer((): ReactElement => {
       <div className={styles.display}>
         <Stage width={679} height={383}>
           <Layer>
-            {crashGame.store.isLoading ? (
+            {crashGame.statusStore.isLoading ? (
               <LoadingBar />
             ) : (
               <>
                 <Rocket />
-                {crashGame.store.isCrashed ? <Multiplier.Crashed /> : <Multiplier.Running />}
+                {crashGame.statusStore.isCrashed ? <Multiplier.Crashed /> : <Multiplier.Running />}
               </>
             )}
           </Layer>

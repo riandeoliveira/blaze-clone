@@ -45,7 +45,7 @@ export const useLoadingBar = () => {
 
   useEffect(() => {
     if (checkIfCanStopLoading()) {
-      crashGame.store.setIsLoading(false);
+      crashGame.statusStore.setIsLoading(false);
     }
   }, [counter]);
 

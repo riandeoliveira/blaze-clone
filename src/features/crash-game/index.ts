@@ -1,43 +1,58 @@
 import { LocalStorageStore } from "store/local-storage.store";
-import { CrashGameStore } from "./store";
-import { CrashGameTool } from "./tools";
+import { ControllerStore } from "./store/controller.store";
+import { DisplayStore } from "./store/display.store";
+import { StatusStore } from "./store/status.store";
 
 class CrashGame {
   public constructor(
+    public readonly controllerStore: ControllerStore,
+    public readonly displayStore: DisplayStore,
     public readonly localStorageStore: LocalStorageStore,
-    public readonly store: CrashGameStore,
-    public readonly tools: CrashGameTool,
+    public readonly statusStore: StatusStore,
   ) {}
 
   public addPreviousCrashPoint(): void {
-    this.store.previousCrashList.push(this.store.multiplier);
-
-    const currentCrashPoint = Number(this.store.multiplier.toFixed(2));
+    const currentCrashPoint = Number(this.displayStore.multiplier.toFixed(2));
 
     this.localStorageStore.addToWalletBalance(currentCrashPoint);
   }
 
   public checkIfCanCrash(): boolean {
-    return this.store.multiplier >= this.store.limit;
+    return this.displayStore.multiplier >= this.displayStore.limit;
   }
 
   public crash(): void {
-    this.store.setIsCrashed(true);
+    this.statusStore.setIsCrashed(true);
     this.addPreviousCrashPoint();
 
     setTimeout(() => {
-      this.store.reset();
-      this.store.setIsLoading(true);
+      this.displayStore.reset();
+      this.statusStore.reset();
+      this.statusStore.setIsLoading(true);
     }, 5000);
   }
 
+  public generateCrashPoint(): number {
+    const e: number = 2 ** 32;
+    const [h] = crypto.getRandomValues(new Uint32Array(1));
+    const crashPoint: number = Math.floor((100 * e - h) / (e - h)) / 100;
+
+    return crashPoint;
+  }
+
   public setCrashPoint(): void {
-    this.store.setLimit(this.tools.generateCrashPoint());
+    this.displayStore.limit = this.generateCrashPoint();
   }
 }
 
+const controllerStore = new ControllerStore();
+const displayStore = new DisplayStore();
 const localStorageStore = new LocalStorageStore();
-const store = new CrashGameStore();
-const tools = new CrashGameTool();
+const statusStore = new StatusStore();
 
-export const crashGame = new CrashGame(localStorageStore, store, tools);
+export const crashGame = new CrashGame(
+  controllerStore,
+  displayStore,
+  localStorageStore,
+  statusStore,
+);
