@@ -1,32 +1,40 @@
 import { observer } from "mobx-react-lite";
-import { useState, type ReactElement } from "react";
+import { type ReactElement } from "react";
+import type { OnValueChange } from "react-number-format";
 import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.scss";
 
 interface NumberFieldProps {
+  hasSuffix?: boolean;
   label: string;
   limit?: number;
-  hasSuffix?: boolean;
+  value?: number | null;
+  onChange: OnValueChange;
 }
 
 export const NumberField = observer(
-  ({ label, limit = 999999, hasSuffix = false }: NumberFieldProps): ReactElement => {
-    const [value, setValue] = useState<number | null | undefined>(null);
-
+  ({
+    label,
+    limit = 999999,
+    hasSuffix = false,
+    value,
+    onChange,
+  }: NumberFieldProps): ReactElement => {
     return (
       <div className={styles.container}>
         <NumericFormat
           allowNegative={false}
+          allowLeadingZeros
           className={styles.field}
-          data-filled={value ? value.toString().length > 0 : false}
+          data-filled={value ? true : false}
           isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
           decimalScale={2}
           fixedDecimalScale
           decimalSeparator=","
           title={label}
-          onValueChange={({ floatValue }): void => setValue(floatValue)}
+          onValueChange={onChange}
           thousandSeparator="."
-          value={value}
+          value={value === 0 ? 0.01 : value}
         />
         <span className={styles.placeholder}>{label}</span>
         {hasSuffix ? <span className={styles.currency}>R$</span> : null}

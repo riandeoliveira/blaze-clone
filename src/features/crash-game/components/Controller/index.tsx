@@ -1,6 +1,6 @@
 import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
-import { useState, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { AmountEarned } from "../AmountEarned";
 import { Checkbox } from "../Checkbox";
 import { NumberField } from "../NumberField";
@@ -8,8 +8,6 @@ import { Tab } from "../Tab";
 import styles from "./styles.module.scss";
 
 export const Controller = observer((): ReactElement => {
-  const [amount, setAmount] = useState<number | null>(null);
-
   return (
     <div className={styles.container}>
       <div className={styles.tab_container}>
@@ -24,18 +22,53 @@ export const Controller = observer((): ReactElement => {
               <NumberField
                 label="Quantia"
                 limit={crashGame.localStorageStore.walletBalance}
+                value={crashGame.controllerStore.normal.amount}
+                onChange={({ floatValue }): void => {
+                  const value = floatValue === 0 ? 0.01 : floatValue;
+
+                  crashGame.controllerStore.updateNormalControl("amount", value);
+                }}
                 hasSuffix
               />
             </div>
-            <button type="button" className={styles.half}>
+            <button
+              type="button"
+              className={styles.half}
+              onClick={(): void => {
+                const value = crashGame.controllerStore.normal.amount;
+
+                if (value) {
+                  const doubleBet = crashGame.handleHalfBet(value);
+                  crashGame.controllerStore.updateNormalControl("amount", doubleBet);
+                }
+              }}
+            >
               ½
             </button>
-            <button type="button" className={styles.double}>
+            <button
+              type="button"
+              className={styles.double}
+              onClick={(): void => {
+                const value = crashGame.controllerStore.normal.amount;
+
+                if (value) {
+                  const doubleBet = crashGame.handleDoubleBet(value);
+
+                  if (doubleBet <= crashGame.localStorageStore.walletBalance) {
+                    crashGame.controllerStore.updateNormalControl("amount", doubleBet);
+                  }
+                }
+              }}
+            >
               2x
             </button>
           </div>
           <NumberField label="Auto Retirar" />
-          <button type="button" className={styles.button}>
+          <button
+            type="button"
+            disabled={!crashGame.controllerStore.normal.amount}
+            className={styles.button}
+          >
             Começar o jogo
           </button>
         </>
@@ -47,13 +80,44 @@ export const Controller = observer((): ReactElement => {
               <NumberField
                 label="Quantia"
                 limit={crashGame.localStorageStore.walletBalance}
+                value={crashGame.controllerStore.auto.amount}
+                onChange={({ floatValue }): void => {
+                  const value = floatValue === 0 ? 0.01 : floatValue;
+
+                  crashGame.controllerStore.updateAutoControl("amount", value);
+                }}
                 hasSuffix
               />
             </div>
-            <button type="button" className={styles.half}>
+            <button
+              type="button"
+              className={styles.half}
+              onClick={(): void => {
+                const value = crashGame.controllerStore.auto.amount;
+
+                if (value) {
+                  const doubleBet = crashGame.handleHalfBet(value);
+                  crashGame.controllerStore.updateAutoControl("amount", doubleBet);
+                }
+              }}
+            >
               ½
             </button>
-            <button type="button" className={styles.double}>
+            <button
+              type="button"
+              className={styles.double}
+              onClick={(): void => {
+                const value = crashGame.controllerStore.auto.amount;
+
+                if (value) {
+                  const doubleBet = crashGame.handleDoubleBet(value);
+
+                  if (doubleBet <= crashGame.localStorageStore.walletBalance) {
+                    crashGame.controllerStore.updateAutoControl("amount", doubleBet);
+                  }
+                }
+              }}
+            >
               2x
             </button>
           </div>

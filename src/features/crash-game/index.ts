@@ -40,6 +40,14 @@ class CrashGame {
     return crashPoint;
   }
 
+  public handleDoubleBet(betValue: number): number {
+    return betValue * 2;
+  }
+
+  public handleHalfBet(betValue: number): number {
+    return betValue / 2;
+  }
+
   public setCrashPoint(): void {
     this.displayStore.limit = this.generateCrashPoint();
   }

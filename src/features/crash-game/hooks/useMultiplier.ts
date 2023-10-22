@@ -14,8 +14,9 @@ export const useMultiplier = (): void => {
 
   const increaseCounter = (): void => {
     const previousMultiplier = crashGame.displayStore.multiplier;
+    const nextMultiplier = previousMultiplier + increaserValue * multiplierPow;
 
-    crashGame.displayStore.setMultiplier(previousMultiplier + increaserValue * multiplierPow);
+    crashGame.displayStore.setMultiplier(nextMultiplier);
   };
 
   useEffect(() => crashGame.setCrashPoint(), []);
