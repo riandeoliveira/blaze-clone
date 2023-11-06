@@ -1,24 +1,32 @@
-import { useLoadingBar } from "features/crash-game/hooks/useLoadingBar";
+import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
-import { type ReactElement } from "react";
-import { Rect, Text } from "react-konva";
+import { useEffect, useState, type ReactElement } from "react";
+import styles from "./styles.module.scss";
 
 export const LoadingBar = observer((): ReactElement => {
-  const { progressBarWidth, counter } = useLoadingBar();
+  const [timer, setTimer] = useState<number>(6.8);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timer > 0.01) setTimer(timer - 0.0125);
+      else {
+        setTimer(0);
+        clearInterval(interval);
+
+        crashGame.statusStore.setIsLoading(false);
+      }
+    }, 10);
+
+    return (): void => {
+      clearInterval(interval);
+    };
+  }, [timer]);
 
   return (
-    <>
-      <Rect x={0} y={170} width={679} height={40} fill="#1b2430" cornerRadius={4} />
-      <Rect x={8} y={178} width={progressBarWidth} height={25} fill="#f12c4c" cornerRadius={4} />
-      <Text
-        text={`Começando em ${counter.seconds}.${counter.milliseconds / 100}s`}
-        fill="#fff"
-        fontFamily="Consolas"
-        fontVariant="bold"
-        fontSize={14}
-        x={273}
-        y={185}
-      />
-    </>
+    <div className={styles.container}>
+      <div className={styles.progress_bar}>
+        <span className={styles.label}>Começando em {timer.toFixed(1)}s</span>
+      </div>
+    </div>
   );
 });

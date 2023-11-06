@@ -1,0 +1,41 @@
+@use "../../../../styles/" as *;
+
+.container {
+  background-color: #1b2430;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  justify-content: center;
+  left: 50%;
+  padding: 8px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+}
+
+.progress_bar {
+  animation: load 6s linear forwards;
+  background-color: #f12c4c;
+  border-radius: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+.label {
+  color: $white;
+  font-family: Consolas;
+  font-size: 14px;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes load {
+  to {
+    width: 0%;
+  }
+}

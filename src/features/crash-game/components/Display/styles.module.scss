@@ -6,8 +6,17 @@
   padding: 14px;
 }
 
-.display {
+.display_container {
   background-color: $background;
   border-radius: 4px;
   padding: 20px;
+}
+
+.display {
+  align-items: end;
+  display: flex;
+  height: 383px;
+  justify-content: end;
+  position: relative;
+  width: 679px;
 }

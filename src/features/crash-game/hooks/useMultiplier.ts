@@ -13,8 +13,8 @@ export const useMultiplier = (): void => {
   };
 
   const increaseCounter = (): void => {
-    const previousMultiplier = crashGame.displayStore.multiplier;
-    const nextMultiplier = previousMultiplier + increaserValue * multiplierPow;
+    const previousMultiplier: number = crashGame.displayStore.multiplier;
+    const nextMultiplier: number = previousMultiplier + increaserValue * multiplierPow;
 
     crashGame.displayStore.setMultiplier(nextMultiplier);
   };
