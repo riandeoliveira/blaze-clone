@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { type ReactElement } from "react";
+import { useRef, type ReactElement } from "react";
 import type { OnValueChange } from "react-number-format";
 import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.scss";
@@ -20,23 +20,32 @@ export const NumberField = observer(
     value,
     onChange,
   }: NumberFieldProps): ReactElement => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleClickLabel = (): void => {
+      inputRef.current?.focus();
+    };
+
     return (
       <div className={styles.container}>
         <NumericFormat
-          allowNegative={false}
           allowLeadingZeros
+          allowNegative={false}
           className={styles.field}
           data-filled={value ? true : false}
-          isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
           decimalScale={2}
-          fixedDecimalScale
           decimalSeparator=","
-          title={label}
+          fixedDecimalScale
+          getInputRef={inputRef}
+          isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
           onValueChange={onChange}
           thousandSeparator="."
+          title={label}
           value={value === 0 ? 0.01 : value}
         />
-        <span className={styles.placeholder}>{label}</span>
+        <span className={styles.placeholder} onClick={handleClickLabel}>
+          {label}
+        </span>
         {hasSuffix ? <span className={styles.currency}>R$</span> : null}
       </div>
     );

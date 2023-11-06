@@ -1,4 +1,4 @@
-@use "../../../../../styles" as *;
+@use "../../../styles/" as *;
 
 .container {
   align-items: center;
@@ -12,7 +12,7 @@
 
 .placeholder {
   color: $light-grey;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   position: absolute;
   transition: margin 0.25s ease, transform 0.25s ease;
@@ -27,7 +27,7 @@
 .field {
   background-color: transparent;
   color: $white;
-  font-size: 12px;
+  font-size: 10px;
   height: 100%;
   outline: 0;
   width: 100%;
