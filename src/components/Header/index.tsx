@@ -7,27 +7,23 @@ import styles from "./styles.module.scss";
 
 export const Header = observer((): ReactElement => {
   return (
-    <>
+    <header>
       <div className={styles.logo}>
         <a href="#">
           <Icon.BlazeLogo />
         </a>
       </div>
-      <header className={styles.header}>
+      <div className={styles.header_area}>
         <div className={styles.header_container}>
           <Navbar />
           <div className={styles.menu}>
-            <div className={styles.icons}>
-              <Icon.Notifications className={styles.icon} />
-              <Icon.Profile className={styles.icon} />
-            </div>
             <Wallet />
             <button type="button" className={styles.button}>
               Depositar
             </button>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 });
