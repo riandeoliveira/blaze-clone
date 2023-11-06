@@ -1,22 +1,20 @@
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
-class LoadingStore {
+export class LoadingStore {
   public isLoading: boolean;
 
   public constructor() {
     this.isLoading = false;
 
-    makeAutoObservable(this, {
-      isLoading: observable,
-    });
-  }
-
-  public wait(): void {
-    this.isLoading = true;
+    makeAutoObservable(this);
   }
 
   public stop(): void {
     this.isLoading = false;
+  }
+
+  public wait(): void {
+    this.isLoading = true;
   }
 }
 

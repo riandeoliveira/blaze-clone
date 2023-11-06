@@ -1,5 +1,5 @@
 import { Icon } from "assets";
-import { crashGame } from "features/crash-game";
+import { crashGame } from "features/games/crash";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import styles from "./styles.module.scss";
