@@ -1,6 +1,6 @@
-import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
+import { crashGame } from "../..";
 import { AmountEarned } from "../AmountEarned";
 import { Checkbox } from "../Checkbox";
 import { NumberField } from "../NumberField";
@@ -63,7 +63,7 @@ export const Controller = observer((): ReactElement => {
               2x
             </button>
           </div>
-          <NumberField label="Auto Retirar" />
+          <NumberField label="Auto Retirar" onChange={(): void => {}} />
           <button
             type="button"
             disabled={!crashGame.controllerStore.normal.amount}
@@ -122,8 +122,8 @@ export const Controller = observer((): ReactElement => {
             </button>
           </div>
           <div className={styles.secondary_fields}>
-            <NumberField label="Auto Retirar" />
-            <NumberField label="Total Apostas" />
+            <NumberField label="Auto Retirar" onChange={(): void => {}} />
+            <NumberField label="Total Apostas" onChange={(): void => {}} />
           </div>
           <button type="button" className={styles.button}>
             Começar o jogo
@@ -133,7 +133,7 @@ export const Controller = observer((): ReactElement => {
       {crashGame.controllerStore.tabMode === "free" ? (
         <>
           <Checkbox label="Apostas Automáticas" />
-          <NumberField label="Auto Retirar" />
+          <NumberField label="Auto Retirar" onChange={(): void => {}} />
           <button type="button" className={styles.button}>
             Começar o jogo
           </button>

@@ -1,6 +1,6 @@
-import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
+import { crashGame } from "../..";
 import { CrashedMultiplier } from "../CrashedMultiplier";
 import { LoadingBar } from "../LoadingBar";
 import { Rocket } from "../Rocket";

@@ -1,6 +1,6 @@
-import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
+import { crashGame } from "../..";
 import styles from "./styles.module.scss";
 
 export const LoadingBar = observer((): ReactElement => {

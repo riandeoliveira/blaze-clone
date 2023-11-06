@@ -1,7 +1,7 @@
 import { Icon } from "assets";
-import { crashGame } from "features/crash-game";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
+import { crashGame } from "../..";
 import styles from "./styles.module.scss";
 
 export const Rocket = observer((): ReactElement => {

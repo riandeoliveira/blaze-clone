@@ -1,7 +1,7 @@
-import { crashGame } from "features/crash-game";
-import { useMultiplier } from "features/crash-game/hooks/useMultiplier";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
+import { crashGame } from "../..";
+import { useMultiplier } from "../../hooks/useMultiplier";
 import styles from "./styles.module.scss";
 
 export const RunningMultiplier = observer((): ReactElement => {
