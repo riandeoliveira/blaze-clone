@@ -1,15 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { useRef, type ReactElement } from "react";
-import type { OnValueChange } from "react-number-format";
+import type { NumberFormatBaseProps } from "react-number-format";
 import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.scss";
 
-interface NumberFieldProps {
+interface NumberFieldProps extends NumberFormatBaseProps {
   hasSuffix?: boolean;
   label: string;
   limit?: number;
   value?: number | null;
-  onChange: OnValueChange;
 }
 
 export const NumberField = observer(
@@ -18,11 +17,11 @@ export const NumberField = observer(
     limit = 999999,
     hasSuffix = false,
     value,
-    onChange,
+    ...rest
   }: NumberFieldProps): ReactElement => {
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleClickLabel = (): void => {
+    const handleLabelClick = (): void => {
       inputRef.current?.focus();
     };
 
@@ -38,12 +37,12 @@ export const NumberField = observer(
           fixedDecimalScale
           getInputRef={inputRef}
           isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
-          onValueChange={onChange}
           thousandSeparator="."
           title={label}
           value={value === 0 ? 0.01 : value}
+          {...rest}
         />
-        <span className={styles.placeholder} onClick={handleClickLabel}>
+        <span className={styles.placeholder} onClick={handleLabelClick}>
           {label}
         </span>
         {hasSuffix ? <span className={styles.currency}>R$</span> : null}
