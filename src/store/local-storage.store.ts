@@ -2,20 +2,20 @@ import { makeAutoObservable } from "mobx";
 import type { LocalStorageKeys } from "types/local-storage";
 
 export class LocalStorageStore {
-  public previousCrashList: number[];
+  public crashHistory: number[];
   public walletBalance: number;
 
   public constructor() {
-    this.previousCrashList = this.getOrCreateItem<number[]>("previous_crash_list", []);
+    this.crashHistory = this.getOrCreateItem<number[]>("crash_history", []);
     this.walletBalance = this.getOrCreateItem<number>("wallet_balance", 0);
 
     makeAutoObservable(this);
   }
 
   public addToWalletBalance(value: number): void {
-    const updatedList = [value, ...this.previousCrashList];
+    const updatedList = [value, ...this.crashHistory];
 
-    this.setPreviousCrashList(updatedList);
+    this.setCrashHistory(updatedList);
   }
 
   public getItem<T>(key: LocalStorageKeys): T | null {
@@ -40,9 +40,9 @@ export class LocalStorageStore {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  public setPreviousCrashList(previousCrashList: number[]): void {
-    this.setItem("previous_crash_list", previousCrashList);
-    this.previousCrashList = previousCrashList;
+  public setCrashHistory(crashHistory: number[]): void {
+    this.setItem("crash_history", crashHistory);
+    this.crashHistory = crashHistory;
   }
 
   public setWalletBalance(walletBalance: number): void {
@@ -50,3 +50,5 @@ export class LocalStorageStore {
     this.walletBalance = walletBalance;
   }
 }
+
+export const localStorageStore = new LocalStorageStore();

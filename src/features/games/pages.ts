@@ -1,4 +1,4 @@
-import { Crash } from "./crash/pages";
+import { Crash } from "features/games.crash/pages";
 
 export const Games = {
   Crash,

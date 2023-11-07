@@ -1,0 +1,21 @@
+@use "/src/styles/" as *;
+
+.container {
+  align-items: center;
+  background-color: #1b2430;
+  border-radius: 8px;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+}
+
+.multiplier {
+  color: $white;
+  // font-family: Consolas;
+  font-size: 32px;
+}

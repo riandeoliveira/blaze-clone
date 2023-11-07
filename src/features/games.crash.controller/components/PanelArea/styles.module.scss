@@ -1,0 +1,18 @@
+@use "/src/styles/" as *;
+
+.container {
+  border-right: 1px solid $separator;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+  width: 325px;
+}
+
+.tab_container {
+  border: 1px solid $separator;
+  border-radius: 4px;
+  display: flex;
+  height: 48px;
+  padding: 3px;
+}
