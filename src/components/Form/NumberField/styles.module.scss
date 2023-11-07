@@ -15,13 +15,12 @@
   font-size: 12px;
   font-weight: 600;
   position: absolute;
-  transition: margin 0.25s ease, transform 0.25s ease;
+  transition: margin 0.25s ease, font-size 0.25s ease;
 }
 
 .placeholder_top {
-  margin-left: -3px;
+  font-size: 8px;
   margin-top: -25px;
-  transform: scale(0.8);
 }
 
 .field {
