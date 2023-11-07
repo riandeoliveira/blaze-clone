@@ -21,7 +21,7 @@
 
 .multiplier {
   color: $white;
-  font-family: Consolas;
+  font-family: $mono-font, $default-font;
   font-size: 32px;
   font-weight: bold;
 }
@@ -37,5 +37,5 @@
 }
 
 .label {
-  font-weight: bold;
+  font-family: $highlight-font, $default-font;
 }

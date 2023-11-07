@@ -16,6 +16,7 @@
 
 .multiplier {
   color: $white;
-  // font-family: Consolas;
+  font-family: $mono-font, $default-font;
   font-size: 32px;
+  font-weight: 700;
 }
