@@ -25,9 +25,8 @@
 
 .label {
   color: $white;
-  font-family: Consolas;
-  font-size: 14px;
-  font-weight: bold;
+  font-family: $mono-font, $default-font;
+  font-size: 12px;
   left: 50%;
   position: absolute;
   top: 50%;

@@ -4,7 +4,7 @@ import { useEffect, useState, type ReactElement } from "react";
 import styles from "./styles.module.scss";
 
 export const LoadingBar = observer((): ReactElement => {
-  const [timer, setTimer] = useState<number>(6.8);
+  const [timer, setTimer] = useState<number>(6.0);
 
   useEffect(() => {
     const interval = setInterval(() => {
