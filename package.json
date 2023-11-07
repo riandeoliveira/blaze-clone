@@ -12,7 +12,6 @@
     "dev": "vite --open",
     "eslint": "eslint --fix src/**/*.{js,jsx,ts,tsx} vite.config.ts",
     "lint": "npm run eslint & npm run prettier & npm run stylelint",
-    "prepare": "husky install",
     "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx} vite.config.ts",
     "start": "vite preview --open",
     "stylelint": "stylelint --fix src/**/*.scss",
