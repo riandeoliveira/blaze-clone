@@ -15,9 +15,9 @@ export const PanelArea = observer((): ReactElement => {
         <Tab mode="auto">Auto</Tab>
         <Tab mode="free">Rodadas Grátis</Tab>
       </div>
-      {tabStore.mode === "normal" ? <NormalBetPanel /> : null}
-      {tabStore.mode === "auto" ? <AutoBetPanel /> : null}
-      {tabStore.mode === "free" ? <FreeBetPanel /> : null}
+      {tabStore.mode === "normal" ? <NormalBetPanel /> : <></>}
+      {tabStore.mode === "auto" ? <AutoBetPanel /> : <></>}
+      {tabStore.mode === "free" ? <FreeBetPanel /> : <></>}
     </div>
   );
 });

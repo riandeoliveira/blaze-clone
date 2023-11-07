@@ -8,14 +8,16 @@ interface NumberFieldProps extends NumberFormatBaseProps {
   hasSuffix?: boolean;
   label: string;
   limit?: number;
-  value?: number | null;
+  placeholderClassName?: string;
+  value?: number;
 }
 
 export const NumberField = observer(
   ({
+    hasSuffix = false,
     label,
     limit = 999999,
-    hasSuffix = false,
+    placeholderClassName,
     value,
     ...rest
   }: NumberFieldProps): ReactElement => {
@@ -42,10 +44,13 @@ export const NumberField = observer(
           value={value === 0 ? 0.01 : value}
           {...rest}
         />
-        <span className={styles.placeholder} onClick={handleLabelClick}>
+        <span
+          className={`${styles.placeholder} ${placeholderClassName ?? ""}`}
+          onClick={handleLabelClick}
+        >
           {label}
         </span>
-        {hasSuffix ? <span className={styles.currency}>R$</span> : null}
+        {hasSuffix ? <span className={styles.currency}>R$</span> : <></>}
       </div>
     );
   },

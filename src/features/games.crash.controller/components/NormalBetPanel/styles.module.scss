@@ -10,6 +10,10 @@
   flex: 1;
 }
 
+.amount {
+  font-size: 10px;
+}
+
 .modifier {
   background-color: transparent;
   border: 1px solid $separator;
@@ -17,6 +21,7 @@
   color: $cloudy-blue;
   cursor: pointer;
   flex: 0.45;
+  font-family: $highlight-font, $default-font;
   font-weight: 600;
   transition: background-color 0.5s ease, color 0.5s ease;
 

@@ -13,7 +13,7 @@ interface CheckboxProps {
 export const Checkbox = observer(({ checked, label, onCheck }: CheckboxProps): ReactElement => {
   return (
     <div className={styles.container} onClick={onCheck}>
-      <div className={styles.checkbox}>{checked ? <Icon.Check /> : null}</div>
+      <div className={styles.checkbox}>{checked ? <Icon.Check /> : <></>}</div>
       <label htmlFor={label} className={styles.label}>
         {label}
       </label>

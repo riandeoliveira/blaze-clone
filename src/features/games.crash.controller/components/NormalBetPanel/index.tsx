@@ -45,6 +45,7 @@ export const NormalBetPanel = observer((): ReactElement => {
             value={normalBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix
+            placeholderClassName={styles.amount}
           />
         </div>
         <button type="button" className={styles.half} onClick={handleHalfBet}>

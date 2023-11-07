@@ -49,6 +49,7 @@ export const AutoBetPanel = observer((): ReactElement => {
             value={autoBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix
+            placeholderClassName={styles.amount}
           />
         </div>
         <button type="button" className={styles.half} onClick={handleHalfBet}>
