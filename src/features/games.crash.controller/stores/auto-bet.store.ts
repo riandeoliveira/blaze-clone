@@ -1,27 +1,27 @@
 import { makeAutoObservable } from "mobx";
 
 export class AutoBetStore {
-  public amount: number | null;
-  public autoCrashout: number | null;
-  public totalBets: number | null;
+  public amount?: number;
+  public autoCrashout?: number;
+  public totalBets?: number;
 
   public constructor() {
-    this.amount = null;
-    this.autoCrashout = null;
-    this.totalBets = null;
+    this.amount = undefined;
+    this.autoCrashout = undefined;
+    this.totalBets = undefined;
 
     makeAutoObservable(this);
   }
 
-  public setAmount(amount: number): void {
+  public setAmount(amount?: number): void {
     this.amount = amount;
   }
 
-  public setAutoCrashout(autoCrashout: number): void {
+  public setAutoCrashout(autoCrashout?: number): void {
     this.autoCrashout = autoCrashout;
   }
 
-  public setTotalBets(totalBets: number): void {
+  public setTotalBets(totalBets?: number): void {
     this.totalBets = totalBets;
   }
 }

@@ -1,15 +1,34 @@
 import { Form } from "components/Form";
+import { freeBetStore } from "features/games.crash.controller/stores/free-bet.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
+import type { NumberFormatValues } from "react-number-format";
 import styles from "./styles.module.scss";
 
 export const FreeBetPanel = observer((): ReactElement => {
+  const handleAutoBetsCheck = (): void => {
+    freeBetStore.toggleAutoBets();
+  };
+
+  const handleAutoCrashoutChange = ({ floatValue }: NumberFormatValues): void => {
+    freeBetStore.setAutoCrashout(floatValue);
+  };
+
   return (
     <>
-      <Form.Checkbox label="Apostas Automáticas" />
-      <Form.NumberField label="Auto Retirar" onChange={(): void => {}} />
-      <button type="button" className={styles.button}>
-        Começar o jogo
+      <Form.Checkbox
+        label="Apostas Automáticas"
+        checked={freeBetStore.isAutoBets}
+        onCheck={handleAutoBetsCheck}
+      />
+      <Form.NumberField
+        label="Auto Retirar"
+        limit={9999}
+        value={freeBetStore.autoCrashout}
+        onValueChange={handleAutoCrashoutChange}
+      />
+      <button type="button" className={styles.button} disabled={!freeBetStore.autoCrashout}>
+        {freeBetStore.isAutoBets ? "Iniciar Auto-Aposta" : "Começar o jogo"}
       </button>
       <div className={styles.free_rounds}>
         <span className={styles.free_rounds_value}>5</span>

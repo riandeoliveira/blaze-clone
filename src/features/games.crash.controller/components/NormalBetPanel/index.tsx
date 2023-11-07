@@ -7,21 +7,17 @@ import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const NormalBetPanel = observer((): ReactElement => {
-  const handleChangeAmount = (values: NumberFormatValues): void => {
-    const { floatValue } = values;
+  const handleAmountChange = ({ floatValue }: NumberFormatValues): void => {
+    const value: number | undefined = floatValue === 0 ? 0.01 : floatValue;
 
-    if (floatValue) {
-      const value = floatValue === 0 ? 0.01 : floatValue;
-
-      normalBetStore.setAmount(value);
-    }
+    normalBetStore.setAmount(value);
   };
 
   const handleHalfBet = (): void => {
     if (normalBetStore.amount) {
-      const doubleBet: number = normalBetStore.amount / 2;
+      const halfBet: number = normalBetStore.amount / 2;
 
-      normalBetStore.setAmount(doubleBet);
+      if (halfBet >= 0.01) normalBetStore.setAmount(halfBet);
     }
   };
 
@@ -35,6 +31,10 @@ export const NormalBetPanel = observer((): ReactElement => {
     }
   };
 
+  const handleAutoCrashoutChange = ({ floatValue }: NumberFormatValues): void => {
+    normalBetStore.setAutoCrashout(floatValue);
+  };
+
   return (
     <>
       <div className={styles.primary_fields}>
@@ -43,7 +43,7 @@ export const NormalBetPanel = observer((): ReactElement => {
             label="Quantia"
             limit={localStorageStore.walletBalance}
             value={normalBetStore.amount}
-            onChange={handleChangeAmount}
+            onValueChange={handleAmountChange}
             hasSuffix
           />
         </div>
@@ -54,7 +54,12 @@ export const NormalBetPanel = observer((): ReactElement => {
           2x
         </button>
       </div>
-      <Form.NumberField label="Auto Retirar" onChange={(): void => {}} />
+      <Form.NumberField
+        label="Auto Retirar"
+        limit={9999}
+        value={normalBetStore.autoCrashout}
+        onValueChange={handleAutoCrashoutChange}
+      />
       <button type="button" disabled={!normalBetStore.amount} className={styles.button}>
         Começar o jogo
       </button>

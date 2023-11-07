@@ -1,21 +1,21 @@
 import { makeAutoObservable } from "mobx";
 
 export class NormalBetStore {
-  public amount: number | null;
-  public autoCrashout: number | null;
+  public amount?: number;
+  public autoCrashout?: number;
 
   public constructor() {
-    this.amount = null;
-    this.autoCrashout = null;
+    this.amount = undefined;
+    this.autoCrashout = undefined;
 
     makeAutoObservable(this);
   }
 
-  public setAmount(amount: number): void {
+  public setAmount(amount?: number): void {
     this.amount = amount;
   }
 
-  public setAutoCrashout(autoCrashout: number): void {
+  public setAutoCrashout(autoCrashout?: number): void {
     this.autoCrashout = autoCrashout;
   }
 }

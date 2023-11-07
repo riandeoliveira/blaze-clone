@@ -7,21 +7,17 @@ import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const AutoBetPanel = observer((): ReactElement => {
-  const handleChangeAmount = (values: NumberFormatValues): void => {
-    const { floatValue } = values;
+  const handleAmountChange = ({ floatValue }: NumberFormatValues): void => {
+    const value: number | undefined = floatValue === 0 ? 0.01 : floatValue;
 
-    if (floatValue) {
-      const value = floatValue === 0 ? 0.01 : floatValue;
-
-      autoBetStore.setAmount(value);
-    }
+    autoBetStore.setAmount(value);
   };
 
   const handleHalfBet = (): void => {
     if (autoBetStore.amount) {
-      const doubleBet: number = autoBetStore.amount / 2;
+      const halfBet: number = autoBetStore.amount / 2;
 
-      autoBetStore.setAmount(doubleBet);
+      if (halfBet >= 0.01) autoBetStore.setAmount(halfBet);
     }
   };
 
@@ -35,6 +31,14 @@ export const AutoBetPanel = observer((): ReactElement => {
     }
   };
 
+  const handleAutoCrashoutChange = ({ floatValue }: NumberFormatValues): void => {
+    autoBetStore.setAutoCrashout(floatValue);
+  };
+
+  const handleTotalBetsChange = ({ floatValue }: NumberFormatValues): void => {
+    autoBetStore.setTotalBets(floatValue);
+  };
+
   return (
     <>
       <div className={styles.primary_fields}>
@@ -43,7 +47,7 @@ export const AutoBetPanel = observer((): ReactElement => {
             label="Quantia"
             limit={localStorageStore.walletBalance}
             value={autoBetStore.amount}
-            onChange={handleChangeAmount}
+            onValueChange={handleAmountChange}
             hasSuffix
           />
         </div>
@@ -55,8 +59,18 @@ export const AutoBetPanel = observer((): ReactElement => {
         </button>
       </div>
       <div className={styles.secondary_fields}>
-        <Form.NumberField label="Auto Retirar" onChange={(): void => {}} />
-        <Form.NumberField label="Total Apostas" onChange={(): void => {}} />
+        <Form.NumberField
+          label="Auto Retirar"
+          limit={9999}
+          value={autoBetStore.autoCrashout}
+          onValueChange={handleAutoCrashoutChange}
+        />
+        <Form.NumberField
+          label="Total Apostas"
+          limit={9999}
+          value={autoBetStore.totalBets}
+          onValueChange={handleTotalBetsChange}
+        />
       </div>
       <button type="button" className={styles.button}>
         Começar o jogo

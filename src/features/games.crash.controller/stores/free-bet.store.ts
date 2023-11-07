@@ -1,22 +1,22 @@
 import { makeAutoObservable } from "mobx";
 
 export class FreeBetStore {
-  public autoBets: number | null;
-  public autoCrashout: number | null;
+  public autoCrashout?: number;
+  public isAutoBets: boolean;
 
   public constructor() {
-    this.autoBets = null;
-    this.autoCrashout = null;
+    this.autoCrashout = undefined;
+    this.isAutoBets = false;
 
     makeAutoObservable(this);
   }
 
-  public setAutoBets(autoBets: number): void {
-    this.autoBets = autoBets;
+  public setAutoCrashout(autoCrashout?: number): void {
+    this.autoCrashout = autoCrashout;
   }
 
-  public setAutoCrashout(autoCrashout: number): void {
-    this.autoCrashout = autoCrashout;
+  public toggleAutoBets(): void {
+    this.isAutoBets = !this.isAutoBets;
   }
 }
 
