@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px 24px;
+  position: relative;
 }
 
 .label {
@@ -16,7 +17,14 @@
 }
 
 .list_container {
-  // background: linear-gradient(270deg, transparent, $background-two 71%);
+  &::after {
+    background-image: linear-gradient(270deg, transparent, $background-two 71%);
+    content: "";
+    height: 32px;
+    position: absolute;
+    top: 42px;
+    width: 24px;
+  }
 }
 
 .list {
