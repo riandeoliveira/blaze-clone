@@ -1,7 +1,7 @@
 @use "../../../../styles/" as *;
 
 .container {
-  background-color: #1b2430;
+  background-color: $background-three;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
