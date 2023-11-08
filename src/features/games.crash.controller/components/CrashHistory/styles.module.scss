@@ -17,6 +17,8 @@
 }
 
 .list_container {
+  min-height: 32px;
+
   &::after {
     background-image: linear-gradient(270deg, transparent, $background-two 71%);
     content: "";
