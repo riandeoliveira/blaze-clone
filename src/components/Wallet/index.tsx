@@ -1,14 +1,14 @@
 import { Icon } from "assets";
+import { localStorageExtension } from "extensions/local-storage";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
-import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const Wallet = observer((): ReactElement => {
   return (
     <div className={styles.wallet}>
       <span className={styles.currency}>
-        {localStorageStore.walletBalance?.toLocaleString("pt-BR", {
+        {localStorageExtension.getWalletBalance().toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}

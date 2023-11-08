@@ -7,7 +7,7 @@ export class LocalStorageStore {
 
   public constructor() {
     this.crashHistory = this.getOrCreateItem<number[]>("crash_history", []);
-    this.walletBalance = this.getOrCreateItem<number>("wallet_balance", 0);
+    this.walletBalance = 0;
 
     makeAutoObservable(this);
   }
