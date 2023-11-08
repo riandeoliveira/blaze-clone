@@ -45,6 +45,12 @@
   letter-spacing: 0.8px;
   padding: 0 6px;
 
+  &[data-crashed="true"] {
+    &:nth-child(1) {
+      animation: crash-recent-in 0.5s ease;
+    }
+  }
+
   &[data-crash-good="true"] {
     background-color: $lime-green;
     color: $dark-green;
@@ -61,5 +67,17 @@
     &:hover {
       background-color: $background;
     }
+  }
+}
+
+@keyframes crash-recent-in {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
