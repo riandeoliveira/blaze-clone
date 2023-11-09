@@ -1,0 +1,41 @@
+@use "../../../../styles/" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.multiplier_container {
+  align-items: center;
+  background-color: $red;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 180px;
+}
+
+.multiplier {
+  color: $white;
+  font-family: $mono-font, $default-font;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.label_container {
+  align-items: center;
+  background-color: $dark-red-2;
+  border-radius: 0 0 4px 4px;
+  color: $white;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+}
+
+.label {
+  font-family: $highlight-font, $default-font;
+}

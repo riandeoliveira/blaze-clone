@@ -1,10 +1,12 @@
 @use "./colors" as *;
+@use "./fonts" as *;
 
 .button_component {
   background-color: $red;
   border-radius: 4px;
   color: $white;
   cursor: pointer;
+  font-family: $highlight-font, $default-font;
   font-size: 14px;
   font-weight: 600;
   height: 40px;

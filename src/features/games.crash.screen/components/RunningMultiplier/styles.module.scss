@@ -1,0 +1,22 @@
+@use "../../../../styles/" as *;
+
+.container {
+  align-items: center;
+  background-color: $background-three;
+  border-radius: 8px;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+}
+
+.multiplier {
+  color: $white;
+  font-family: $mono-font, $default-font;
+  font-size: 32px;
+  font-weight: 700;
+}

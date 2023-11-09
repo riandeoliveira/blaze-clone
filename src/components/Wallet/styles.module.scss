@@ -1,4 +1,4 @@
-@use "../../styles" as *;
+@use "../../styles/" as *;
 
 .wallet {
   align-items: center;
@@ -15,7 +15,6 @@
 }
 
 .currency {
-  font-family: $secondary-font, $default-font;
   font-size: 14px;
 }
 
