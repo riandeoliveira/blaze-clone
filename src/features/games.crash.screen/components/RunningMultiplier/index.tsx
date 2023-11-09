@@ -1,9 +1,9 @@
-import { extensions } from "extensions";
+import { crashExtension } from "extensions/crash-extension";
+import { localStorageExtension } from "extensions/local-storage";
 import { displayStore } from "features/games.crash.screen/stores/display.store";
 import { statusStore } from "features/games.crash.screen/stores/status.store";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
-import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const RunningMultiplier = observer((): ReactElement => {
@@ -21,7 +21,7 @@ export const RunningMultiplier = observer((): ReactElement => {
   };
 
   useEffect(() => {
-    const crashPoint: number = extensions.generateCrashPoint();
+    const crashPoint: number = crashExtension.generateCrashPoint();
 
     displayStore.setLimit(crashPoint);
   }, []);
@@ -32,7 +32,7 @@ export const RunningMultiplier = observer((): ReactElement => {
 
       const currentCrashPoint = Number(displayStore.multiplier.toFixed(2));
 
-      localStorageStore.addToWalletBalance(currentCrashPoint);
+      localStorageExtension.addToCrashHistory(currentCrashPoint);
 
       setTimeout(() => {
         displayStore.reset();

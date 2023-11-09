@@ -1,1 +1,1 @@
-export type LocalStorageKeys = "access_token" | "crash_history" | "wallet_balance";
+export type LocalStorageKeys = "crash_history" | "wallet_balance";

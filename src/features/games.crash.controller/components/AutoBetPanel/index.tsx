@@ -3,8 +3,8 @@ import { autoBetStore } from "features/games.crash.controller/stores/auto-bet.st
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
-import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
+import { localStorageExtension } from "extensions/local-storage";
 
 export const AutoBetPanel = observer((): ReactElement => {
   const handleAmountChange = ({ floatValue }: NumberFormatValues): void => {
@@ -25,7 +25,7 @@ export const AutoBetPanel = observer((): ReactElement => {
     if (autoBetStore.amount) {
       const doubleBet: number = autoBetStore.amount * 2;
 
-      if (doubleBet <= localStorageStore.walletBalance) {
+      if (doubleBet <= localStorageExtension.getWalletBalance()) {
         autoBetStore.setAmount(doubleBet);
       }
     }
@@ -45,7 +45,7 @@ export const AutoBetPanel = observer((): ReactElement => {
         <div className={styles.number_field}>
           <Form.NumberField
             label="Quantia"
-            limit={localStorageStore.walletBalance}
+            limit={localStorageExtension.getWalletBalance()}
             value={autoBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix

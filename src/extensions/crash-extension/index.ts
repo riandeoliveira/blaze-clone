@@ -1,4 +1,4 @@
-export class Extensions {
+export class CrashExtension {
   public generateCrashPoint(): number {
     const e: number = 2 ** 32;
     const [h] = crypto.getRandomValues(new Uint32Array(1));
@@ -8,4 +8,4 @@ export class Extensions {
   }
 }
 
-export const extensions = new Extensions();
+export const crashExtension = new CrashExtension();

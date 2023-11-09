@@ -1,7 +1,7 @@
 import { tabStore } from "features/games.crash.controller/stores/tab.store";
+import type { TabModeType } from "features/games.crash.controller/types";
 import { observer } from "mobx-react-lite";
 import type { ReactElement, ReactNode } from "react";
-import type { TabModeType } from "../../../games.crash/store/controller.store";
 import styles from "./styles.module.scss";
 
 interface TabProps {

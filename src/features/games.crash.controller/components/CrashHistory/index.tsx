@@ -1,7 +1,7 @@
+import { localStorageExtension } from "extensions/local-storage";
 import { statusStore } from "features/games.crash.screen/stores/status.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
-import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const CrashHistory = observer((): ReactElement => {
@@ -10,7 +10,7 @@ export const CrashHistory = observer((): ReactElement => {
       <span className={styles.label}>Anterior</span>
       <div className={styles.list_container}>
         <div className={styles.list}>
-          {localStorageStore.crashHistory.map((crashPoint, index) => (
+          {localStorageExtension.getCrashHistory().map((crashPoint, index) => (
             <span
               className={styles.crash_point}
               data-crashed={statusStore.isCrashed}

@@ -1,9 +1,9 @@
 import { Form } from "components/Form";
+import { localStorageExtension } from "extensions/local-storage";
 import { normalBetStore } from "features/games.crash.controller/stores/normal-bet.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
-import { localStorageStore } from "store/local-storage.store";
 import styles from "./styles.module.scss";
 
 export const NormalBetPanel = observer((): ReactElement => {
@@ -25,7 +25,7 @@ export const NormalBetPanel = observer((): ReactElement => {
     if (normalBetStore.amount) {
       const doubleBet: number = normalBetStore.amount * 2;
 
-      if (doubleBet <= localStorageStore.walletBalance) {
+      if (doubleBet <= localStorageExtension.getWalletBalance()) {
         normalBetStore.setAmount(doubleBet);
       }
     }
@@ -41,7 +41,7 @@ export const NormalBetPanel = observer((): ReactElement => {
         <div className={styles.number_field}>
           <Form.NumberField
             label="Quantia"
-            limit={localStorageStore.walletBalance}
+            limit={localStorageExtension.getWalletBalance()}
             value={normalBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix

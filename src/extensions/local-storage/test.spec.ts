@@ -3,22 +3,37 @@ import { localStorageExtension } from ".";
 
 describe("Local Storage Extension", () => {
   beforeEach(() => {
-    localStorageExtension.clear();
+    localStorage.clear();
   });
 
-  it("Should set and get an access token", () => {
-    const accessToken: string = "983fc27br46t986347tbrv73";
+  it("Should add a crash point to the crash history", () => {
+    localStorageExtension.setCrashHistory([1.05, 3.21]);
+    localStorageExtension.addToCrashHistory(42.0);
 
-    localStorageExtension.setAccessToken(accessToken);
-
-    expect(localStorageExtension.getAccessToken()).toBe(accessToken);
+    expect(localStorageExtension.getCrashHistory()).toEqual([42, 1.05, 3.21]);
   });
 
-  it("Should return an empty string when access token is not a string", () => {
-    const accessToken: number = 12345;
+  it("Should be an empty array if catch an error when trying to access the crash history", () => {
+    localStorageExtension.setCrashHistory(null as any);
 
-    localStorageExtension.setAccessToken(accessToken as any);
+    expect(localStorageExtension.getCrashHistory()).toEqual([]);
+  });
 
-    expect(localStorageExtension.getAccessToken()).toBe("");
+  it("Should be zero if catch an error when trying to access the wallet balance", () => {
+    localStorageExtension.setWalletBalance(null as any);
+
+    expect(localStorageExtension.getWalletBalance()).toBe(0);
+  });
+
+  it("Should set and get a crash history", () => {
+    localStorageExtension.setCrashHistory([1.05, 3.21]);
+
+    expect(localStorageExtension.getCrashHistory()).toEqual([1.05, 3.21]);
+  });
+
+  it("Should set and get a wallet balance", () => {
+    localStorageExtension.setWalletBalance(49.99);
+
+    expect(localStorageExtension.getWalletBalance()).toBe(49.99);
   });
 });
