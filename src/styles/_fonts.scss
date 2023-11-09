@@ -1,13 +1,13 @@
 @font-face {
   font-family: SofiaPro;
   font-weight: 400;
-  src: url("fonts/SofiaPro-Regular.otf") format("opentype");
+  src: url("/src/styles/fonts/SofiaPro-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: SofiaPro;
   font-weight: 600;
-  src: url("fonts/SofiaPro-SemiBold.otf") format("opentype");
+  src: url("/src/styles/fonts/SofiaPro-SemiBold.otf") format("opentype");
 }
 
 $primary-font: "Roboto";
