@@ -1,3 +1,5 @@
+import { crashExtension } from "extensions/crash-extension";
+import _ from "lodash";
 import { BaseLocalStorageExtension } from "../local-storage.base";
 import { crashHistorySchema, walletBalanceSchema } from "./schemas";
 
@@ -12,9 +14,17 @@ export class LocalStorageExtension extends BaseLocalStorageExtension {
     try {
       return crashHistorySchema.parse(crashHistory);
     } catch {
-      this.setCrashHistory([]);
+      const newCrashHistory: number[] = [];
 
-      return [];
+      _.times(15, () => {
+        const crashPoint: number = crashExtension.generateCrashPoint();
+
+        newCrashHistory.push(crashPoint);
+      });
+
+      this.setCrashHistory(newCrashHistory);
+
+      return newCrashHistory;
     }
   }
 
