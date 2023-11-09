@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "mikestead.dotenv",
     "naumovs.color-highlight",
+    "redhat.vscode-xml",
     "stylelint.vscode-stylelint",
     "visualstudioexptteam.vscodeintellicode",
     "wix.vscode-import-cost"

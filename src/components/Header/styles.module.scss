@@ -1,6 +1,6 @@
-@use "../../styles" as *;
+@use "../../styles/" as *;
 
-.header {
+.header_area {
   border-bottom: 1px solid $separator;
   display: flex;
   height: 72px;
@@ -19,8 +19,7 @@
 .header_container {
   display: flex;
   justify-content: space-between;
-  margin-left: 256px;
-  max-width: 1100px;
+  max-width: 1072px;
   width: 100%;
 }
 
@@ -28,16 +27,6 @@
   align-items: center;
   display: flex;
   gap: 24px;
-}
-
-.icons {
-  align-items: center;
-  display: flex;
-  gap: 24px;
-}
-
-.icon {
-  cursor: pointer;
 }
 
 .button {

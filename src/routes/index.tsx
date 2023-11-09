@@ -1,9 +1,14 @@
-import { Games } from "pages/games";
-import { createBrowserRouter } from "react-router-dom";
+import { Games } from "features/games/pages";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { AppRoute } from "./AppRoute";
 
 export const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Navigate to="/games/crash" />,
+  },
+  {
     path: "/games/crash",
-    element: <Games.Crash />,
+    element: <AppRoute page={Games.Crash} />,
   },
 ]);

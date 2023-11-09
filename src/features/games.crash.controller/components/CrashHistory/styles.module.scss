@@ -1,0 +1,85 @@
+@use "../../../../styles/" as *;
+
+.container {
+  border-top: 1px solid $separator;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px;
+  position: relative;
+}
+
+.label {
+  color: $light-grey;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.list_container {
+  min-height: 32px;
+
+  &::after {
+    background-image: linear-gradient(270deg, transparent, $background-two 71%);
+    content: "";
+    height: 32px;
+    position: absolute;
+    top: 42px;
+    width: 24px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
+  overflow-x: hidden;
+}
+
+.crash_point {
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+  height: 32px;
+  letter-spacing: 0.8px;
+  padding: 0 6px;
+
+  &[data-crashed="true"] {
+    &:nth-child(1) {
+      animation: crash-recent-in 0.5s ease;
+    }
+  }
+
+  &[data-crash-good="true"] {
+    background-color: $lime-green;
+    color: $dark-green;
+
+    &:hover {
+      background-color: $darker-green;
+    }
+  }
+
+  &[data-crash-good="false"] {
+    background-color: $grey;
+    color: $light-grey;
+
+    &:hover {
+      background-color: $background;
+    }
+  }
+}
+
+@keyframes crash-recent-in {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

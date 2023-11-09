@@ -1,10 +1,9 @@
-!.env.example
-!.vscode/extensions.json
 .cache
 .DS_Store
 .env
-.env.*
+.env.* !.env.example
 .fleet
+.husky
 .idea
 .nitro
 .output
@@ -31,8 +30,7 @@ node_modules
 npm-debug.log*
 obj
 out
-package-lock.json
 pnpm-debug.log*
+TODO.md
 yarn-debug.log*
 yarn-error.log*
-yarn.lock

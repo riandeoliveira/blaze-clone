@@ -1,0 +1,57 @@
+@use "../../../../styles/" as *;
+
+.primary_fields {
+  display: flex;
+  gap: 10px;
+  height: 48px;
+}
+
+.number_field {
+  flex: 1;
+}
+
+.amount {
+  font-size: 10px;
+}
+
+.modifier {
+  background-color: transparent;
+  border: 1px solid $separator;
+  border-radius: 4px;
+  color: $cloudy-blue;
+  cursor: pointer;
+  flex: 0.45;
+  font-family: $highlight-font, $default-font;
+  font-weight: 600;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+  &:hover {
+    background-color: $background;
+    color: $white;
+  }
+}
+
+.half {
+  @extend .modifier;
+
+  font-size: 18px;
+}
+
+.double {
+  @extend .modifier;
+
+  font-size: 12px;
+}
+
+.button {
+  @extend .button_component;
+
+  height: 48px;
+  letter-spacing: normal;
+  width: 100%;
+}
+
+.secondary_fields {
+  display: flex;
+  gap: 10px;
+}

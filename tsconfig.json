@@ -12,7 +12,7 @@
       "ESNext"
     ],
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "newLine": "lf",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -36,6 +36,7 @@
     "node_modules"
   ],
   "include": [
+    "cypress",
     "src",
     "vite.config.ts"
   ],
