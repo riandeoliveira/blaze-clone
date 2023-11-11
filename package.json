@@ -7,6 +7,7 @@
   "homepage": "<PROJECT_URL>",
   "main": "src/main.tsx",
   "scripts": {
+    "add:component": "node scripts/add-component.mjs",
     "build": "npm run lint && npm run test && tsc && vite build",
     "coverage": "vitest run --coverage && start coverage/index.html",
     "cypress": "cypress open",
