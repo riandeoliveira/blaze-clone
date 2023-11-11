@@ -1,5 +1,5 @@
-import type { TabModeType } from "ypes/tab";
-import { makeAutoObservable } from fromtypes / tab;
+import { makeAutoObservable } from "mobx";
+import type { TabModeType } from "types/tab";
 
 export class TabStore {
   public mode: TabModeType;
