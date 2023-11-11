@@ -5,8 +5,14 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 325px;
   padding: 16px 24px;
-  width: 325px;
+  width: 100%;
+
+  @include media-query($laptop-s) {
+    border: 0;
+    max-width: none;
+  }
 }
 
 .tab_container {

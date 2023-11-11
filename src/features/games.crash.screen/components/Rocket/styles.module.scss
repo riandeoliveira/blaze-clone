@@ -27,3 +27,11 @@
     height: 340px;
   }
 }
+
+@include media-query($tablet-s) {
+  @keyframes take-of {
+    to {
+      height: 160px;
+    }
+  }
+}
