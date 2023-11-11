@@ -91,6 +91,42 @@
     "sass",
     "scss"
   ],
+  // TODO Highlight
+  "todohighlight.defaultStyle": {
+    "borderRadius": "4px"
+  },
+  "todohighlight.keywords": [
+    {
+      "backgroundColor": "#EF6C00",
+      "borderRadius": "4px",
+      "color": "#fff",
+      "text": "BUG:",
+    },
+    {
+      "backgroundColor": "#4CAF50",
+      "borderRadius": "4px",
+      "color": "#fff",
+      "text": "FEAT:",
+    },
+    {
+      "backgroundColor": "#F44336",
+      "borderRadius": "4px",
+      "color": "#fff",
+      "text": "HOTFIX:",
+    },
+    {
+      "backgroundColor": "#2196F3",
+      "borderRadius": "4px",
+      "color": "#fff",
+      "text": "NOTE:",
+    },
+    {
+      "backgroundColor": "#009688",
+      "borderRadius": "4px",
+      "color": "#fff",
+      "text": "REFACT:",
+    }
+  ],
   //
   // TypeScript
   //
