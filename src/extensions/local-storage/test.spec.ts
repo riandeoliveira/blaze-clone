@@ -19,10 +19,10 @@ describe("Local Storage Extension", () => {
     expect(localStorageExtension.getCrashHistory()).toHaveLength(15);
   });
 
-  it("Should be zero if catch an error when trying to access the wallet balance", () => {
+  it("Should be 99.99 if catch an error when trying to access the wallet balance", () => {
     localStorageExtension.setWalletBalance(null as any);
 
-    expect(localStorageExtension.getWalletBalance()).toBe(0);
+    expect(localStorageExtension.getWalletBalance()).toBe(99.99);
   });
 
   it("Should not be an empty array when access the crash history", () => {

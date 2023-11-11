@@ -34,9 +34,9 @@ export class LocalStorageExtension extends BaseLocalStorageExtension {
     try {
       return walletBalanceSchema.parse(walletBalance);
     } catch {
-      this.setWalletBalance(0);
+      this.setWalletBalance(99.99);
 
-      return 0;
+      return 99.99;
     }
   }
 
