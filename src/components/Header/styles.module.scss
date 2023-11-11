@@ -5,7 +5,11 @@
   display: flex;
   height: 72px;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 16px 0 144px;
+
+  @include media-query($tablet-m) {
+    padding: 0 16px 0 64px;
+  }
 }
 
 .logo {
@@ -31,4 +35,14 @@
 
 .button {
   @extend .button_component;
+}
+
+@include media-query($tablet-s) {
+  .menu {
+    gap: 12px
+  }
+
+  .button {
+    width: 82px;
+  }
 }

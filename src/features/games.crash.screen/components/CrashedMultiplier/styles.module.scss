@@ -17,6 +17,11 @@
   height: 80px;
   justify-content: center;
   width: 180px;
+
+  @include media-query($tablet-s) {
+    height: 60px;
+    width: 160px;
+  }
 }
 
 .multiplier {
