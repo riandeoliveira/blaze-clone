@@ -45,3 +45,13 @@
     fill: $white;
   }
 }
+
+@include media-query($tablet-s) {
+  .link {
+    padding: 0 8px;
+  }
+
+  .text {
+    display: none;
+  }
+}

@@ -18,5 +18,8 @@
   height: 383px;
   justify-content: end;
   position: relative;
-  width: 679px;
+
+  @include media-query($tablet-s) {
+    height: 200px;
+  }
 }
