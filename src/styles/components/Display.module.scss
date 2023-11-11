@@ -1,0 +1,25 @@
+@use "../" as *;
+
+.display_area {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+}
+
+.display_container {
+  background-color: $background;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.display {
+  align-items: end;
+  display: flex;
+  height: 383px;
+  justify-content: end;
+  position: relative;
+
+  @include media-query($tablet-s) {
+    height: 200px;
+  }
+}

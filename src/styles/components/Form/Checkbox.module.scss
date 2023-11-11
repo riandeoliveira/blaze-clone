@@ -1,0 +1,25 @@
+@use "../../" as *;
+
+.form_checkbox_area {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 16px;
+}
+
+.checkbox {
+  align-items: center;
+  background-color: $grey-2;
+  border: 1px solid $separator;
+  border-radius: 2px;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  width: 16px;
+}
+
+.label {
+  color: $white;
+  cursor: pointer;
+  font-size: 12px;
+}

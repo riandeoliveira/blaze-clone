@@ -1,0 +1,16 @@
+@use "../" as *;
+
+.control_panel_area {
+  border-right: 1px solid $separator;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 325px;
+  padding: 16px 24px;
+  width: 100%;
+
+  @include media-query($laptop-s) {
+    border: 0;
+    max-width: none;
+  }
+}
