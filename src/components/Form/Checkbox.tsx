@@ -13,7 +13,9 @@ interface CheckboxProps {
 export const Checkbox = observer(({ checked, label, onCheck }: CheckboxProps): ReactElement => {
   return (
     <div className={styles.form_checkbox_area} onClick={onCheck}>
-      <div className={styles.checkbox}>{checked ? <Icon.Check /> : <></>}</div>
+      <button type="button" className={styles.checkbox}>
+        {checked ? <Icon.Check /> : <></>}
+      </button>
       <label htmlFor={label} className={styles.label}>
         {label}
       </label>

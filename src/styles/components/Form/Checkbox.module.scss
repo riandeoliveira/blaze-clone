@@ -12,6 +12,7 @@
   background-color: $grey-2;
   border: 1px solid $separator;
   border-radius: 2px;
+  cursor: inherit;
   display: flex;
   height: 16px;
   justify-content: center;
@@ -20,6 +21,6 @@
 
 .label {
   color: $white;
-  cursor: pointer;
+  cursor: inherit;
   font-size: 12px;
 }

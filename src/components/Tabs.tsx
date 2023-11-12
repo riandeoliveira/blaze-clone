@@ -18,14 +18,15 @@ export const Tabs = observer(({ data }: TabsProps): ReactElement => {
   return (
     <div className={styles.tabs_area}>
       {data.map(({ label, mode }) => (
-        <span
-          data-selected={tabStore.mode === mode}
-          className={styles.tab}
+        <button
+          type="button"
+          className={styles.button}
           onClick={(): void => tabStore.setMode(mode)}
+          data-selected={tabStore.mode === mode}
           key={uuid()}
         >
           {label}
-        </span>
+        </button>
       ))}
     </div>
   );
