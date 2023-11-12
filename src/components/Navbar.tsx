@@ -1,6 +1,7 @@
-import { Icon } from "assets";
+import { icons } from "assets";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
+import SVG from "react-inlinesvg";
 import styles from "styles/components/Navbar.module.scss";
 
 export const Navbar = observer((): ReactElement => {
@@ -9,13 +10,13 @@ export const Navbar = observer((): ReactElement => {
       <ul className={styles.list}>
         <li className={styles.item}>
           <a href="#" title="Seção de Jogos" className={styles.link} data-selected>
-            <Icon.Casino className={styles.icon} />
+            <SVG src={icons.casino} className={styles.icon} />
             <span className={styles.text}>Cassino</span>
           </a>
         </li>
         <li className={styles.item}>
           <a href="#" title="Seção de Esportes" className={styles.link}>
-            <Icon.Sports className={styles.icon} />
+            <SVG src={icons.sports} className={styles.icon} />
             <span className={styles.text}>Esportes</span>
           </a>
         </li>

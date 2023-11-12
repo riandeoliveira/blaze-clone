@@ -1,7 +1,8 @@
-import { Icon } from "assets";
+import { icons } from "assets";
 import { observer } from "mobx-react-lite";
 import type { MouseEventHandler } from "react";
 import { type ReactElement } from "react";
+import SVG from "react-inlinesvg";
 import styles from "styles/components/Form/Checkbox.module.scss";
 
 interface CheckboxProps {
@@ -14,7 +15,7 @@ export const Checkbox = observer(({ checked, label, onCheck }: CheckboxProps): R
   return (
     <div className={styles.form_checkbox_area} onClick={onCheck}>
       <button type="button" className={styles.checkbox}>
-        {checked ? <Icon.Check /> : <></>}
+        {checked ? <SVG src={icons.check} /> : <></>}
       </button>
       <label htmlFor={label} className={styles.label}>
         {label}

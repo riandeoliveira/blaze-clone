@@ -1,7 +1,8 @@
-import { Icon } from "assets";
+import { icons } from "assets";
 import { Navbar } from "components/Navbar";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
+import SVG from "react-inlinesvg";
 import { localStorageStore } from "stores/local-storage.store";
 import styles from "styles/components/Header.module.scss";
 
@@ -26,7 +27,11 @@ export const Header = observer((): ReactElement => {
     <header className={styles.header_area}>
       <div className={styles.logo}>
         <a href="#" title="Vá para a página inicial">
-          {windowWidth <= 768 ? <Icon.BlazeMobileLogo /> : <Icon.BlazeDesktopLogo />}
+          {windowWidth <= 768 ? (
+            <SVG src={icons.blazeMobileLogo} />
+          ) : (
+            <SVG src={icons.blazeDesktopLogo} />
+          )}
         </a>
       </div>
       <div className={styles.header_container}>
@@ -40,7 +45,7 @@ export const Header = observer((): ReactElement => {
                   currency: "BRL",
                 })}
               </span>
-              <Icon.BRL className={styles.icon} />
+              <SVG src={icons.brl} className={styles.icon} />
             </div>
             <button type="button" className={styles.button} onClick={handleDeposit}>
               Depositar

@@ -11,7 +11,7 @@
 }
 
 .rocket_trail {
-  animation: take-of 5s linear forwards;
+  animation: take-off 5s linear forwards;
   background-color: $red;
   height: 0;
   transform: translate(0.5px, -5px);
@@ -22,14 +22,14 @@
   }
 }
 
-@keyframes take-of {
+@keyframes take-off {
   to {
     height: 340px;
   }
 }
 
 @include media-query($tablet-s) {
-  @keyframes take-of {
+  @keyframes take-off {
     to {
       height: 160px;
     }

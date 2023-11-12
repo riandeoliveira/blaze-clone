@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { observer } from "mobx-react-lite";
 import { useRef, type ReactElement } from "react";
 import type { NumberFormatBaseProps } from "react-number-format";
@@ -39,6 +40,7 @@ export const NumberField = observer(
           fixedDecimalScale
           getInputRef={inputRef}
           isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
+          name={_.kebabCase(label)}
           thousandSeparator="."
           title={label}
           value={value === 0 ? 0.01 : value}

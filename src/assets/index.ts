@@ -1,17 +1,17 @@
-import { ReactComponent as BlazeDesktopLogo } from "./icons/blaze-desktop-logo.svg";
-import { ReactComponent as BlazeMobileLogo } from "./icons/blaze-mobile-logo.svg";
-import { ReactComponent as BRL } from "./icons/brl-icon.svg";
-import { ReactComponent as Casino } from "./icons/casino-icon.svg";
-import { ReactComponent as Check } from "./icons/check-icon.svg";
-import { ReactComponent as CrashRocket } from "./icons/crash-rocket.svg";
-import { ReactComponent as Sports } from "./icons/sports-icon.svg";
+import blazeDesktopLogo from "./icons/blaze-desktop-logo.svg";
+import blazeMobileLogo from "./icons/blaze-mobile-logo.svg";
+import brl from "./icons/brl-icon.svg";
+import casino from "./icons/casino-icon.svg";
+import check from "./icons/check-icon.svg";
+import crashRocket from "./icons/crash-rocket.svg";
+import sports from "./icons/sports-icon.svg";
 
-export const Icon = {
-  BlazeDesktopLogo,
-  BlazeMobileLogo,
-  BRL,
-  Casino,
-  Check,
-  CrashRocket,
-  Sports,
+export const icons = {
+  blazeDesktopLogo,
+  blazeMobileLogo,
+  brl,
+  casino,
+  check,
+  crashRocket,
+  sports,
 };
