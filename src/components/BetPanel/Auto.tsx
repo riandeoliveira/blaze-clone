@@ -1,9 +1,9 @@
 import { Form } from "components/Form";
-import { localStorageExtension } from "extensions/local-storage-extension";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
 import { autoBetStore } from "stores/auto-bet.store";
+import { localStorageStore } from "stores/local-storage.store";
 import styles from "styles/components/BetPanel/Auto.module.scss";
 
 export const Auto = observer((): ReactElement => {
@@ -25,7 +25,7 @@ export const Auto = observer((): ReactElement => {
     if (autoBetStore.amount) {
       const doubleBet: number = autoBetStore.amount * 2;
 
-      if (doubleBet <= localStorageExtension.getWalletBalance()) {
+      if (doubleBet <= localStorageStore.walletBalance) {
         autoBetStore.setAmount(doubleBet);
       }
     }
@@ -45,7 +45,7 @@ export const Auto = observer((): ReactElement => {
         <div className={styles.number_field}>
           <Form.NumberField
             label="Quantia"
-            limit={localStorageExtension.getWalletBalance()}
+            limit={localStorageStore.walletBalance}
             value={autoBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix

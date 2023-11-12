@@ -1,8 +1,8 @@
 import { Form } from "components/Form";
-import { localStorageExtension } from "extensions/local-storage-extension";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
+import { localStorageStore } from "stores/local-storage.store";
 import { normalBetStore } from "stores/normal-bet.store";
 import styles from "styles/components/BetPanel/Normal.module.scss";
 
@@ -25,7 +25,7 @@ export const Normal = observer((): ReactElement => {
     if (normalBetStore.amount) {
       const doubleBet: number = normalBetStore.amount * 2;
 
-      if (doubleBet <= localStorageExtension.getWalletBalance()) {
+      if (doubleBet <= localStorageStore.walletBalance) {
         normalBetStore.setAmount(doubleBet);
       }
     }
@@ -41,7 +41,7 @@ export const Normal = observer((): ReactElement => {
         <div className={styles.number_field}>
           <Form.NumberField
             label="Quantia"
-            limit={localStorageExtension.getWalletBalance()}
+            limit={localStorageStore.walletBalance}
             value={normalBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix
@@ -61,7 +61,14 @@ export const Normal = observer((): ReactElement => {
         value={normalBetStore.autoCrashout}
         onValueChange={handleAutoCrashoutChange}
       />
-      <button type="button" disabled={!normalBetStore.amount} className={styles.button}>
+      <button
+        type="button"
+        disabled={!normalBetStore.amount}
+        className={styles.button}
+        onClick={() => {
+          localStorageStore.setWalletBalance(localStorageStore.walletBalance + 10);
+        }}
+      >
         Começar o jogo
       </button>
     </>

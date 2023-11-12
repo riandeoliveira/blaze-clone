@@ -1,8 +1,8 @@
 import { crashExtension } from "extensions/crash-extension";
-import { localStorageExtension } from "extensions/local-storage-extension";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
 import { displayStore } from "stores/display.store";
+import { localStorageStore } from "stores/local-storage.store";
 import { statusStore } from "stores/status.store";
 import styles from "styles/components/Multiplier/Running.module.scss";
 
@@ -32,7 +32,7 @@ export const Running = observer((): ReactElement => {
 
       const currentCrashPoint = Number(displayStore.multiplier.toFixed(2));
 
-      localStorageExtension.addToCrashHistory(currentCrashPoint);
+      localStorageStore.addToCrashHistory(currentCrashPoint);
 
       setTimeout(() => {
         displayStore.reset();

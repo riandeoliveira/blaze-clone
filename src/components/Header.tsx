@@ -1,8 +1,8 @@
 import { Icon } from "assets";
 import { Navbar } from "components/Navbar";
-import { localStorageExtension } from "extensions/local-storage-extension";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
+import { localStorageStore } from "stores/local-storage.store";
 import styles from "styles/components/Header.module.scss";
 
 export const Header = observer((): ReactElement => {
@@ -29,7 +29,7 @@ export const Header = observer((): ReactElement => {
           <div className={styles.menu}>
             <div className={styles.wallet}>
               <span className={styles.currency}>
-                {localStorageExtension.getWalletBalance().toLocaleString("pt-BR", {
+                {localStorageStore.walletBalance.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })}
