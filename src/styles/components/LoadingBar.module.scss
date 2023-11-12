@@ -1,0 +1,43 @@
+@use "../" as *;
+
+.loading_bar_area {
+  background-color: $background-three;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  justify-content: center;
+  left: 50%;
+  max-width: 600px;
+  padding: 8px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.progress_bar {
+  animation: load 6s linear forwards;
+  background-color: $red;
+  border-radius: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+.label {
+  color: $white;
+  font-family: $mono-font, $default-font;
+  font-size: 12px;
+  font-weight: 500;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes load {
+  to {
+    width: 0%;
+  }
+}
