@@ -5,12 +5,12 @@ import { makeAutoObservable } from "mobx";
 import { crashHistorySchema, walletBalanceSchema } from "schemas/local-storage-schemas";
 
 export class LocalStorageStore {
-  private _crashHistory: number[];
-  private _walletBalance: number;
+  public crashHistory: number[];
+  public walletBalance: number;
 
   public constructor() {
-    this._crashHistory = this.crashHistory;
-    this._walletBalance = this.walletBalance;
+    this.crashHistory = this.getCrashHistory();
+    this.walletBalance = this.getWalletBalance();
 
     makeAutoObservable(this);
   }
@@ -19,15 +19,11 @@ export class LocalStorageStore {
     this.setCrashHistory([crashPoint, ...this.crashHistory]);
   }
 
-  public get crashHistory(): number[] {
+  private getCrashHistory(): number[] {
     const crashHistory = localStorageExtension.getItem<number[]>("crash_history");
 
     try {
-      const parsedValue: number[] = crashHistorySchema.parse(crashHistory);
-
-      this.setCrashHistory(parsedValue);
-
-      return this._crashHistory;
+      return crashHistorySchema.parse(crashHistory);
     } catch {
       const newCrashHistory: number[] = [];
 
@@ -37,35 +33,34 @@ export class LocalStorageStore {
         newCrashHistory.push(crashPoint);
       });
 
-      this.setCrashHistory(newCrashHistory);
-      return this._crashHistory;
+      localStorageExtension.setItem("crash_history", newCrashHistory);
+
+      return newCrashHistory;
     }
   }
 
-  public get walletBalance(): number {
+  private getWalletBalance(): number {
     const walletBalance = localStorageExtension.getItem<number>("wallet_balance");
 
     try {
-      const parsedValue: number = walletBalanceSchema.parse(walletBalance);
-
-      this.setWalletBalance(parsedValue);
+      return walletBalanceSchema.parse(walletBalance);
     } catch {
-      this.setWalletBalance(99.99);
-    }
+      localStorageExtension.setItem("wallet_balance", 99.99);
 
-    return this._walletBalance;
+      return 99.99;
+    }
   }
 
   public setCrashHistory(crashHistory: number[]): void {
     localStorageExtension.setItem("crash_history", crashHistory);
 
-    this._crashHistory = crashHistory;
+    this.crashHistory = this.getCrashHistory();
   }
 
   public setWalletBalance(walletBalance: number): void {
     localStorageExtension.setItem("wallet_balance", walletBalance);
 
-    this._walletBalance = walletBalance;
+    this.walletBalance = this.getWalletBalance();
   }
 }
 
