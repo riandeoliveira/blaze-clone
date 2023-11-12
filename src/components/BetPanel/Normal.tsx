@@ -61,14 +61,7 @@ export const Normal = observer((): ReactElement => {
         value={normalBetStore.autoCrashout}
         onValueChange={handleAutoCrashoutChange}
       />
-      <button
-        type="button"
-        disabled={!normalBetStore.amount}
-        className={styles.button}
-        onClick={() => {
-          localStorageStore.setWalletBalance(localStorageStore.walletBalance + 10);
-        }}
-      >
+      <button type="button" disabled={!normalBetStore.amount} className={styles.button}>
         Começar o jogo
       </button>
     </>

@@ -19,10 +19,17 @@ describe("Local Storage Store", () => {
     expect(localStorageStore.crashHistory).toHaveLength(15);
   });
 
-  it("Should be 99.99 if catch an error when trying to access the wallet balance", () => {
+  it("Should be the default value if catch an error when trying to access the wallet balance", () => {
     localStorageStore.setWalletBalance(null as any);
 
-    expect(localStorageStore.walletBalance).toBe(99.99);
+    expect(localStorageStore.walletBalance).toBe(100);
+  });
+
+  it("Should deposit an amount into the wallet balance", () => {
+    localStorageStore.setWalletBalance(100);
+    localStorageStore.addToWalletBalance(10);
+
+    expect(localStorageStore.walletBalance).toBe(110);
   });
 
   it("Should not be an empty array when access the crash history", () => {

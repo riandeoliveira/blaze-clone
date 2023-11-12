@@ -18,6 +18,10 @@ export const Header = observer((): ReactElement => {
     return () => removeEventListener("resize", handleResize);
   }, []);
 
+  const handleDeposit = (): void => {
+    localStorageStore.addToWalletBalance(10);
+  };
+
   return (
     <header className={styles.header_area}>
       <div className={styles.logo}>
@@ -38,7 +42,7 @@ export const Header = observer((): ReactElement => {
               </span>
               <Icon.BRL className={styles.icon} />
             </div>
-            <button type="button" className={styles.button}>
+            <button type="button" className={styles.button} onClick={handleDeposit}>
               Depositar
             </button>
           </div>

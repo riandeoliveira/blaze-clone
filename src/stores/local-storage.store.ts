@@ -19,6 +19,10 @@ export class LocalStorageStore {
     this.setCrashHistory([crashPoint, ...this.crashHistory]);
   }
 
+  public addToWalletBalance(amount: number): void {
+    this.setWalletBalance(this.walletBalance + amount);
+  }
+
   private getCrashHistory(): number[] {
     const crashHistory = localStorageExtension.getItem<number[]>("crash_history");
 
@@ -45,9 +49,9 @@ export class LocalStorageStore {
     try {
       return walletBalanceSchema.parse(walletBalance);
     } catch {
-      localStorageExtension.setItem("wallet_balance", 99.99);
+      localStorageExtension.setItem("wallet_balance", 100);
 
-      return 99.99;
+      return 100;
     }
   }
 
