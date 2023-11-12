@@ -7,6 +7,8 @@
   "homepage": "<PROJECT_URL>",
   "main": "src/main.tsx",
   "scripts": {
+    "add:component": "node scripts/add-component.mjs",
+    "add:store": "node scripts/add-store.mjs",
     "build": "npm run lint && npm run test && tsc && vite build",
     "coverage": "vitest run --coverage && start coverage/index.html",
     "cypress": "cypress open",
@@ -26,6 +28,7 @@
     "mobx-react-lite": "^4.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-inlinesvg": "^4.1.0",
     "react-number-format": "^5.3.1",
     "react-router-dom": "^6.18.0",
     "uuid": "^9.0.1",

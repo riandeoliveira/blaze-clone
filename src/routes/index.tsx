@@ -1,4 +1,4 @@
-import { Games } from "features/games/pages";
+import { Games } from "pages/games";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { AppRoute } from "./AppRoute";
 

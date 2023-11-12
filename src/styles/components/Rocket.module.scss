@@ -1,0 +1,37 @@
+@use "../" as *;
+
+.rocket_area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.rocket {
+  display: flex;
+}
+
+.rocket_trail {
+  animation: take-off 5s linear forwards;
+  background-color: $red;
+  height: 0;
+  transform: translate(0.5px, -5px);
+  width: 5px;
+
+  &[data-crashed="true"] {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes take-off {
+  to {
+    height: 340px;
+  }
+}
+
+@include media-query($tablet-s) {
+  @keyframes take-off {
+    to {
+      height: 160px;
+    }
+  }
+}
