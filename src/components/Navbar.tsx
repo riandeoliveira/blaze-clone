@@ -8,13 +8,13 @@ export const Navbar = observer((): ReactElement => {
     <nav className={styles.navbar_area}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <a href="#" className={styles.link} data-selected>
+          <a href="#" title="Seção de Jogos" className={styles.link} data-selected>
             <Icon.Casino className={styles.icon} />
             <span className={styles.text}>Cassino</span>
           </a>
         </li>
         <li className={styles.item}>
-          <a href="#" className={styles.link}>
+          <a href="#" title="Seção de Esportes" className={styles.link}>
             <Icon.Sports className={styles.icon} />
             <span className={styles.text}>Esportes</span>
           </a>

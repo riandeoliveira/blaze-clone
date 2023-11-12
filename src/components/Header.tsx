@@ -21,7 +21,9 @@ export const Header = observer((): ReactElement => {
   return (
     <header className={styles.header_area}>
       <div className={styles.logo}>
-        <a href="#">{windowWidth <= 768 ? <Icon.BlazeMobileLogo /> : <Icon.BlazeDesktopLogo />}</a>
+        <a href="#" title="Vá para a página inicial">
+          {windowWidth <= 768 ? <Icon.BlazeMobileLogo /> : <Icon.BlazeDesktopLogo />}
+        </a>
       </div>
       <div className={styles.header_container}>
         <div className={styles.header_content}>
