@@ -91,7 +91,9 @@
     "sass",
     "scss"
   ],
+  //
   // TODO Highlight
+  //
   "todohighlight.defaultStyle": {
     "borderRadius": "4px"
   },
