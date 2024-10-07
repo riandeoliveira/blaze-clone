@@ -1,10 +1,10 @@
-import { Form } from "components/Form";
+import { Form } from "@/components/Form";
+import { localStorageStore } from "@/stores/local-storage.store";
+import { normalBetStore } from "@/stores/normal-bet.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
-import { localStorageStore } from "stores/local-storage.store";
-import { normalBetStore } from "stores/normal-bet.store";
-import styles from "styles/components/BetPanel/Normal.module.scss";
+import { Button } from "../button";
 
 export const Normal = observer((): ReactElement => {
   const handleAmountChange = ({ floatValue }: NumberFormatValues): void => {
@@ -37,21 +37,28 @@ export const Normal = observer((): ReactElement => {
 
   return (
     <>
-      <div className={styles.bet_panel_normal_area}>
-        <div className={styles.number_field}>
+      <div className="flex gap-[10px] h-12">
+        <div className="flex-1">
           <Form.NumberField
             label="Quantia"
             limit={localStorageStore.walletBalance}
             value={normalBetStore.amount}
             onValueChange={handleAmountChange}
             hasSuffix
-            placeholderClassName={styles.amount}
           />
         </div>
-        <button type="button" className={styles.half} onClick={handleHalfBet}>
+        <button
+          type="button"
+          className="bg-transparent border border-solid border-c-separator rounded text-c-cloudy-blue cursor-pointer flex-[0.45] font-sofia-pro font-semibold transition-colors duration-500 hover:bg-c-background hover:text-white text-lg"
+          onClick={handleHalfBet}
+        >
           ½
         </button>
-        <button type="button" className={styles.double} onClick={handleDoubleBet}>
+        <button
+          type="button"
+          className="bg-transparent border border-solid border-c-separator rounded text-c-cloudy-blue cursor-pointer flex-[0.45] font-sofia-pro font-semibold transition-colors duration-500 hover:bg-c-background hover:text-white text-xs"
+          onClick={handleDoubleBet}
+        >
           2x
         </button>
       </div>
@@ -61,9 +68,9 @@ export const Normal = observer((): ReactElement => {
         value={normalBetStore.autoCrashout}
         onValueChange={handleAutoCrashoutChange}
       />
-      <button type="button" disabled={!normalBetStore.amount} className={styles.button}>
+      <Button.Primary disabled={!normalBetStore.amount} className="h-12 tracking-normal w-full">
         Começar o jogo
-      </button>
+      </Button.Primary>
     </>
   );
 });

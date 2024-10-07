@@ -1,9 +1,9 @@
+import { cn } from "@/utils/cn";
 import _ from "lodash";
 import { observer } from "mobx-react-lite";
 import { useRef, type ReactElement } from "react";
 import type { NumberFormatBaseProps } from "react-number-format";
 import { NumericFormat } from "react-number-format";
-import styles from "styles/components/Form/NumberField.module.scss";
 
 interface NumberFieldProps extends NumberFormatBaseProps {
   hasSuffix?: boolean;
@@ -29,12 +29,11 @@ export const NumberField = observer(
     };
 
     return (
-      <div className={styles.form_number_field_area}>
+      <div className="items-center bg-c-background rounded flex gap-1 h-12 py-1.5 px-4 w-full">
         <NumericFormat
           allowLeadingZeros
           allowNegative={false}
-          className={styles.field}
-          data-filled={value ? true : false}
+          className="bg-transparent text-white text-xs font-semibold h-full outline-0 pt-[13px] w-full peer"
           decimalScale={2}
           decimalSeparator=","
           fixedDecimalScale
@@ -47,12 +46,16 @@ export const NumberField = observer(
           {...rest}
         />
         <span
-          className={`${styles.placeholder} ${placeholderClassName ?? ""}`}
+          className={cn(
+            "text-c-light-grey text-xs font-semibold absolute transition-all duration-200 peer-focus:text-[8px] peer-focus:-mt-[25px]",
+            value ? "text-[8px] -mt-[25px]" : "",
+            placeholderClassName,
+          )}
           onClick={handleLabelClick}
         >
           {label}
         </span>
-        {hasSuffix ? <span className={styles.currency}>R$</span> : <></>}
+        {hasSuffix && <span className="text-c-light-grey text-sm font-semibold">R$</span>}
       </div>
     );
   },

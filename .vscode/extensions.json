@@ -1,5 +1,7 @@
 {
   "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
     "editorconfig.editorconfig",
@@ -7,7 +9,6 @@
     "mikestead.dotenv",
     "naumovs.color-highlight",
     "redhat.vscode-xml",
-    "stylelint.vscode-stylelint",
     "visualstudioexptteam.vscodeintellicode",
     "wayou.vscode-todo-highlight",
     "wix.vscode-import-cost",

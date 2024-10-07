@@ -1,8 +1,8 @@
-import { crashExtension } from "extensions/crash-extension";
-import { localStorageExtension } from "extensions/local-storage-extension";
+import { crashExtension } from "@/extensions/crash-extension";
+import { localStorageExtension } from "@/extensions/local-storage-extension";
+import { crashHistorySchema, walletBalanceSchema } from "@/schemas/local-storage-schemas";
 import _ from "lodash";
 import { makeAutoObservable } from "mobx";
-import { crashHistorySchema, walletBalanceSchema } from "schemas/local-storage-schemas";
 
 export class LocalStorageStore {
   public crashHistory: number[];

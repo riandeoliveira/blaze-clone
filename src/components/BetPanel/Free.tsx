@@ -1,9 +1,9 @@
-import { Form } from "components/Form";
+import { Form } from "@/components/Form";
+import { freeBetStore } from "@/stores/free-bet.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
-import { freeBetStore } from "stores/free-bet.store";
-import styles from "styles/components/BetPanel/Free.module.scss";
+import { Button } from "../button";
 
 export const Free = observer((): ReactElement => {
   const handleAutoBetsCheck = (): void => {
@@ -27,19 +27,19 @@ export const Free = observer((): ReactElement => {
         value={freeBetStore.autoCrashout}
         onValueChange={handleAutoCrashoutChange}
       />
-      <button type="button" className={styles.button} disabled={!freeBetStore.autoCrashout}>
+      <Button.Primary className="h-12 tracking-normal w-full" disabled={!freeBetStore.autoCrashout}>
         {freeBetStore.isAutoBets ? "Iniciar Auto-Aposta" : "Começar o jogo"}
-      </button>
-      <div className={styles.free_rounds}>
-        <span className={styles.free_rounds_value}>5</span>
-        <span className={styles.free_rounds_label}>Rodadas grátis restantes</span>
+      </Button.Primary>
+      <div className="font-semibold uppercase">
+        <span className="text-white text-[10px] mr-[3px]">5</span>
+        <span className="text-c-light-grey text-[10px]">Rodadas grátis restantes</span>
       </div>
-      <div className={styles.container}>
-        <div className={styles.earned}>
-          <span className={styles.label}>Valor Ganho</span>
-          <div className={styles.amount_container}>
-            <span className={styles.label}>0,00</span>
-            <span className={styles.currency}>R$</span>
+      <div className="border border-solid border-c-separator rounded h-12 p-[3px]">
+        <div className="items-center bg-c-dark-background-four rounded flex h-full justify-between p-[14px]">
+          <span className="text-white text-xs font-semibold uppercase">Valor Ganho</span>
+          <div className="items-center flex gap-[3px]">
+            <span className="text-white text-xs font-semibold uppercase">0,00</span>
+            <span className="text-xs font-semibold uppercase text-c-light-grey">R$</span>
           </div>
         </div>
       </div>

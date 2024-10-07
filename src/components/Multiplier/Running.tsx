@@ -1,10 +1,9 @@
-import { crashExtension } from "extensions/crash-extension";
+import { crashExtension } from "@/extensions/crash-extension";
+import { displayStore } from "@/stores/display.store";
+import { localStorageStore } from "@/stores/local-storage.store";
+import { statusStore } from "@/stores/status.store";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
-import { displayStore } from "stores/display.store";
-import { localStorageStore } from "stores/local-storage.store";
-import { statusStore } from "stores/status.store";
-import styles from "styles/components/Multiplier/Running.module.scss";
 
 export const Running = observer((): ReactElement => {
   const [multiplierPow, setMultiplierPow] = useState<number>(0.5);
@@ -49,8 +48,8 @@ export const Running = observer((): ReactElement => {
   }, [displayStore.multiplier]);
 
   return (
-    <div className={styles.multiplier_running_area}>
-      <span className={styles.multiplier}>
+    <div className="items-center bg-c-background-three rounded-lg flex h-20 justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] s-600px:h-[60px] s-600px:w-40">
+      <span className="text-white font-roboto-mono text-[32px] font-bold">
         {displayStore.multiplier.toFixed(2).replace(".", ",")}X
       </span>
     </div>

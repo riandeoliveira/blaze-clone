@@ -1,13 +1,12 @@
-import { Tabs } from "components/Tabs";
+import { Tabs } from "@/components/Tabs";
+import { tabStore } from "@/stores/tab.store";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
-import { tabStore } from "stores/tab.store";
-import styles from "styles/components/ControlPanel.module.scss";
 import { BetPanel } from "./BetPanel";
 
 export const ControlPanel = observer((): ReactElement => {
   return (
-    <div className={styles.control_panel_area}>
+    <div className="border-r border-solid border-c-separator flex flex-col gap-4 max-w-[325px] py-4 px-6 w-full s-1080px:border-0 s-1080px:max-w-none">
       <Tabs
         data={[
           { label: "Normal", mode: "normal" },

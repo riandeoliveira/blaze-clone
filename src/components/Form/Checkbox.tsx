@@ -1,25 +1,25 @@
-import { icons } from "assets";
-import { observer } from "mobx-react-lite";
+import { Icon } from "@/assets/icons";
 import type { MouseEventHandler } from "react";
 import { type ReactElement } from "react";
-import SVG from "react-inlinesvg";
-import styles from "styles/components/Form/Checkbox.module.scss";
 
-interface CheckboxProps {
+type CheckboxProps = {
   checked: boolean;
   label: string;
   onCheck: MouseEventHandler<HTMLElement>;
-}
+};
 
-export const Checkbox = observer(({ checked, label, onCheck }: CheckboxProps): ReactElement => {
+export const Checkbox = ({ checked, label, onCheck }: CheckboxProps): ReactElement => {
   return (
-    <div className={styles.form_checkbox_area} onClick={onCheck}>
-      <button type="button" className={styles.checkbox}>
-        {checked ? <SVG src={icons.check} /> : <></>}
+    <div onClick={onCheck} className="items-center cursor-pointer flex gap-4">
+      <button
+        type="button"
+        className="items-center bg-c-grey-2 border border-solid border-c-separator rounded-sm cursor-pointer flex h-4 justify-center w-4"
+      >
+        {checked && <Icon.Check />}
       </button>
-      <label htmlFor={label} className={styles.label}>
+      <label htmlFor={label} className="text-white cursor-pointer text-xs">
         {label}
       </label>
     </div>
   );
-});
+};

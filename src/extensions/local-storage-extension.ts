@@ -1,4 +1,4 @@
-import type { LocalStorageKeys } from "types/local-storage";
+import type { LocalStorageKeys } from "@/types/local-storage";
 
 export class LocalStorageExtension {
   private storage: Storage;

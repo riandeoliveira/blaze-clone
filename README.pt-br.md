@@ -7,15 +7,15 @@
   <h1>🚀 Blaze Clone 🚀</h1>
 </div>
 
-## 📚 About
+## 📚 Sobre
 
-Functional clone of the Crash game from the Blaze betting platform, with a responsive and adaptive layout for mobile devices.
+Clone funcional do jogo Crash da plataforma de apostas Blaze, com um layout responsivo e adaptável para dispositivos móveis.
 
-## 💻 How to access
+## 💻 Como acessar
 
-The application is available online and can be accessed [here](https://blaze-clone-alpha.vercel.app/).
+A aplicação está disponível online e pode ser acessada [aqui](https://blaze-clone-alpha.vercel.app/).
 
-## 🛠️ Stack
+## 🛠️ Tecnologias
 
 <br />
 
@@ -40,5 +40,5 @@ The application is available online and can be accessed [here](https://blaze-clo
 <br />
 
 <p align="center">
-  ✨ Made with 💙 by <a href="https://github.com/riandeoliveira"><strong>Rian Oliveira</strong></a> ✨
+  ✨ Feito com 💙 por <a href="https://github.com/riandeoliveira"><strong>Rian Oliveira</strong></a> ✨
 </p>
