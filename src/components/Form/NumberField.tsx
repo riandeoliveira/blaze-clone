@@ -47,7 +47,7 @@ export const NumberField = observer(
         />
         <span
           className={cn(
-            "text-c-light-grey text-xs font-semibold absolute transition-all duration-200 peer-focus:text-[8px] peer-focus:-mt-[25px]",
+            "text-c-light-grey text-xs font-sofia-pro font-bold absolute transition-all duration-200 peer-focus:text-[8px] peer-focus:-mt-[25px]",
             value ? "text-[8px] -mt-[25px]" : "",
             placeholderClassName,
           )}

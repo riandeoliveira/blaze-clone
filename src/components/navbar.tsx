@@ -11,7 +11,7 @@ export const Navbar = (): ReactElement => {
             className="items-center border-b-2 border-solid border-c-red cursor-pointer flex gap-1 h-full px-4 transition-all duration-500 group-hover:border-c-red s-600px:p-0"
           >
             <Icon.Casino className="[&:hover>g>path]:fill-white" />
-            <span className="text-c-light-grey text-[11px] font-semibold tracking-tight uppercase transition-colors duration-500 font-sofia-pro group-hover:text-white s-600px:hidden">
+            <span className="text-white text-[11px] font-semibold tracking-[0.03125em] uppercase transition-colors duration-500 font-sofia-pro group-hover:text-white s-600px:hidden">
               Cassino
             </span>
           </a>
@@ -22,7 +22,7 @@ export const Navbar = (): ReactElement => {
             className="items-center border-b-2 border-solid border-transparent cursor-pointer flex gap-1 h-full px-4 transition-all duration-500 group-hover:border-c-red s-600px:p-0"
           >
             <Icon.Sports className="[&:hover>g>path]:fill-white" />
-            <span className="text-c-light-grey text-[11px] font-semibold tracking-tight uppercase transition-colors duration-500 font-sofia-pro group-hover:text-white s-600px:hidden">
+            <span className="text-c-light-grey text-[11px] font-semibold tracking-[0.03125em] uppercase transition-colors duration-500 font-sofia-pro group-hover:text-white s-600px:hidden">
               Esportes
             </span>
           </a>

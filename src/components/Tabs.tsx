@@ -20,7 +20,7 @@ export const Tabs = observer(({ data }: TabsProps): ReactElement => {
         <button
           type="button"
           className={cn(
-            "items-center bg-transparent rounded text-c-light-grey cursor-pointer flex flex-1 text-[10px] font-semibold justify-center text-center",
+            "items-center bg-transparent rounded text-c-light-grey cursor-pointer flex flex-1 text-[10px] font-sofia-pro font-semibold justify-center text-center",
             tabStore.mode === mode ? "bg-c-background text-white" : "",
           )}
           onClick={(): void => tabStore.setMode(mode)}

@@ -7,7 +7,7 @@ export const LoadingBar = observer((): ReactElement => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (timer > 0.01) setTimer(timer - 0.0125);
+      if (timer > 0.1) setTimer(timer - 0.0125);
       else {
         setTimer(0);
         clearInterval(interval);

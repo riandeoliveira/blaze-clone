@@ -80,7 +80,7 @@ export const Auto = observer((): ReactElement => {
           onValueChange={handleTotalBetsChange}
         />
       </div>
-      <Button.Primary className="h-12 tracking-normal w-full">Começar o jogo</Button.Primary>
+      <Button.Primary className="h-12 tracking-normal w-full">Iniciar Auto-Aposta</Button.Primary>
     </>
   );
 });

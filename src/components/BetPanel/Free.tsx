@@ -31,15 +31,23 @@ export const Free = observer((): ReactElement => {
         {freeBetStore.isAutoBets ? "Iniciar Auto-Aposta" : "Começar o jogo"}
       </Button.Primary>
       <div className="font-semibold uppercase">
-        <span className="text-white text-[10px] mr-[3px]">5</span>
-        <span className="text-c-light-grey text-[10px]">Rodadas grátis restantes</span>
+        <span className="text-white text-[10px] mr-[3px] font-sofia-pro">5</span>
+        <span className="text-c-light-grey text-[10px] font-sofia-pro">
+          Rodadas grátis restantes
+        </span>
       </div>
       <div className="border border-solid border-c-separator rounded h-12 p-[3px]">
         <div className="items-center bg-c-dark-background-four rounded flex h-full justify-between p-[14px]">
-          <span className="text-white text-xs font-semibold uppercase">Valor Ganho</span>
+          <span className="text-white text-xs font-semibold uppercase font-sofia-pro leading-[1.33]">
+            Valor Ganho
+          </span>
           <div className="items-center flex gap-[3px]">
-            <span className="text-white text-xs font-semibold uppercase">0,00</span>
-            <span className="text-xs font-semibold uppercase text-c-light-grey">R$</span>
+            <span className="text-white text-xs font-semibold uppercase font-sofia-pro leading-[1.33]">
+              0,00
+            </span>
+            <span className="text-xs font-semibold uppercase text-c-light-grey font-sofia-pro leading-[1.33]">
+              R$
+            </span>
           </div>
         </div>
       </div>

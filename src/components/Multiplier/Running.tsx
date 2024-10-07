@@ -49,7 +49,7 @@ export const Running = observer((): ReactElement => {
 
   return (
     <div className="items-center bg-c-background-three rounded-lg flex h-20 justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] s-600px:h-[60px] s-600px:w-40">
-      <span className="text-white font-roboto-mono text-[32px] font-bold">
+      <span className="text-white text-[32px] font-roboto-mono font-bold">
         {displayStore.multiplier.toFixed(2).replace(".", ",")}X
       </span>
     </div>

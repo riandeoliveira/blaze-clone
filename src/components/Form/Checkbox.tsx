@@ -17,7 +17,7 @@ export const Checkbox = ({ checked, label, onCheck }: CheckboxProps): ReactEleme
       >
         {checked && <Icon.Check />}
       </button>
-      <label htmlFor={label} className="text-white cursor-pointer text-xs">
+      <label htmlFor={label} className="text-white cursor-pointer text-xs font-sofia-pro">
         {label}
       </label>
     </div>

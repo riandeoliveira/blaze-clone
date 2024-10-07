@@ -33,9 +33,9 @@ const config = {
         "c-separator": "hsl(212, 16%, 23%)",
       },
       fontFamily: {
-        "roboto-mono": ["RobotoMono", "sans-serif"],
-        "sofia-pro": ["SofiaPro", "sans-serif"],
-        roboto: ["Roboto", "sans-serif"],
+        "roboto-mono": "Roboto Mono",
+        "sofia-pro": "SofiaPro",
+        roboto: "Roboto",
       },
       keyframes: {
         "crash-recent-in": {
