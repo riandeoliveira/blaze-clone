@@ -7,18 +7,19 @@ export const LoadingBar = observer((): ReactElement => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (timer > 0.1) setTimer(timer - 0.0125);
-      else {
-        setTimer(0);
-        clearInterval(interval);
+      if (timer > 0.1) {
+        setTimer(timer - 0.0125);
 
-        statusStore.setIsLoading(false);
+        return;
       }
+
+      setTimer(0);
+      clearInterval(interval);
+
+      statusStore.setIsLoading(false);
     }, 10);
 
-    return (): void => {
-      clearInterval(interval);
-    };
+    return (): void => clearInterval(interval);
   }, [timer]);
 
   return (

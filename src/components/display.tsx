@@ -1,9 +1,9 @@
-import { Multiplier } from "@/components/Multiplier";
 import { statusStore } from "@/stores/status.store";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
-import { LoadingBar } from "./LoadingBar";
-import { Rocket } from "./Rocket";
+import { LoadingBar } from "./loading-bar";
+import { Multiplier } from "./multiplier";
+import { Rocket } from "./rocket";
 
 export const Display = observer((): ReactElement => {
   return (

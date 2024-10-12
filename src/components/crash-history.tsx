@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 
 export const CrashHistory = observer((): ReactElement => {
-  const MAX_CRASH_HISTORY_ITEMS: number = 14;
+  const MAX_CRASH_HISTORY_ITEMS: number = 24;
 
   return (
     <div className="border-t border-solid border-c-separator flex flex-col gap-3 py-4 px-6 relative">
