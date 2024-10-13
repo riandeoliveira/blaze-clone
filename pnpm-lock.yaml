@@ -93,9 +93,6 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
-      sass:
-        specifier: ^1.79.4
-        version: 1.79.4
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13
