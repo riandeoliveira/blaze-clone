@@ -1,6 +1,6 @@
 import type { IconType } from "@/assets/icons";
 import { Icon } from "@/assets/icons";
-import { localStorageStore } from "@/stores/local-storage.store";
+import { useDependencies } from "@/contexts/dependencies-context";
 import type { ParentComponentProps } from "@/types/components";
 import { cn } from "@/utils/cn";
 import { toBRL } from "@/utils/currency";
@@ -11,9 +11,11 @@ import { Button } from "./button";
 interface HeaderRootProps extends ParentComponentProps {}
 
 const HeaderRoot = observer(({ children }: HeaderRootProps): ReactElement => {
+  const { walletBalanceStore } = useDependencies();
+
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
 
-  const handleDeposit = (): void => localStorageStore.addToWalletBalance(10);
+  const handleDeposit = (): void => walletBalanceStore.incrementWith(10);
 
   useEffect(() => {
     const mediaQuery: MediaQueryList = matchMedia("(max-width: 600px)");
@@ -39,7 +41,7 @@ const HeaderRoot = observer(({ children }: HeaderRootProps): ReactElement => {
           {children}
           <div className="items-center flex gap-6 s-600px:gap-3">
             <div className="items-center border border-solid border-c-separator rounded text-white flex font-medium gap-1 h-10 px-4 s-600px:px-2 tracking-[0.0625em]">
-              <span className="text-sm">{toBRL(localStorageStore.walletBalance)}</span>
+              <span className="text-sm">{toBRL(walletBalanceStore.amount)}</span>
               <Icon.Brl className="w-4" />
             </div>
             <Button.Primary onClick={handleDeposit} className="s-600px:w-[82px]">

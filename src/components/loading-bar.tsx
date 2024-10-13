@@ -1,9 +1,11 @@
-import { statusStore } from "@/stores/status.store";
+import { useDependencies } from "@/contexts/dependencies-context";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
 
 export const LoadingBar = observer((): ReactElement => {
-  const [timer, setTimer] = useState<number>(6.0);
+  const { statusStore } = useDependencies();
+
+  const [timer, setTimer] = useState<number>(6);
 
   useEffect(() => {
     const interval = setInterval(() => {

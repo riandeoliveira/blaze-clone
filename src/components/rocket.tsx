@@ -1,10 +1,12 @@
 import { Icon } from "@/assets/icons";
-import { statusStore } from "@/stores/status.store";
+import { useDependencies } from "@/contexts/dependencies-context";
 import { cn } from "@/utils/cn";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 
 export const Rocket = observer((): ReactElement => {
+  const { statusStore } = useDependencies();
+
   return (
     <div className="items-center flex flex-col">
       <div className="flex">

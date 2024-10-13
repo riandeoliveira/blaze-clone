@@ -1,19 +1,25 @@
 import { makeAutoObservable } from "mobx";
 
-export class DisplayStore {
-  public limit: number;
-  public multiplier: number;
+export interface IDisplayStore {
+  limit: number;
+  multiplier: number;
+
+  reset(): void;
+  setLimit(limit: number): void;
+  setMultiplier(multiplier: number): void;
+}
+
+export class DisplayStore implements IDisplayStore {
+  public limit: number = 0;
+  public multiplier: number = 1;
 
   public constructor() {
-    this.limit = 0;
-    this.multiplier = 1.0;
-
     makeAutoObservable(this);
   }
 
   public reset(): void {
-    this.limit = 0;
-    this.multiplier = 1.0;
+    this.setLimit(0);
+    this.setMultiplier(1);
   }
 
   public setLimit(limit: number): void {
@@ -24,5 +30,3 @@ export class DisplayStore {
     this.multiplier = multiplier;
   }
 }
-
-export const displayStore = new DisplayStore();

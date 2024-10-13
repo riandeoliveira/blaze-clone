@@ -1,4 +1,4 @@
-import { statusStore } from "@/stores/status.store";
+import { useDependencies } from "@/contexts/dependencies-context";
 import { observer } from "mobx-react-lite";
 import type { ReactElement } from "react";
 import { LoadingBar } from "./loading-bar";
@@ -6,6 +6,8 @@ import { Multiplier } from "./multiplier";
 import { Rocket } from "./rocket";
 
 export const Display = observer((): ReactElement => {
+  const { statusStore } = useDependencies();
+
   return (
     <div className="flex flex-col p-[14px]">
       <div className="bg-c-background rounded p-5">

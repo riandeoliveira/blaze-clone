@@ -3,11 +3,13 @@ import { ControlPanel } from "@/components/control-panel";
 import { CrashHistory } from "@/components/crash-history";
 import { Display } from "@/components/display";
 import { Header } from "@/components/header";
-import { tabStore } from "@/stores/tab.store";
+import { useDependencies } from "@/contexts/dependencies-context";
 import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
 
 const Crash = observer((): ReactElement => {
+  const { tabStore } = useDependencies();
+
   return (
     <>
       <Header.Root>
