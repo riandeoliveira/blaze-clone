@@ -19,3 +19,13 @@ export class TabStore implements ITabStore {
     this.mode = mode;
   }
 }
+
+// export const useTabStore = (): ITabStore => {
+//   const [mode, setMode] = useState<TabModeKey>("normal");
+
+//   return {
+//     mode,
+
+//     setMode,
+//   };
+// };

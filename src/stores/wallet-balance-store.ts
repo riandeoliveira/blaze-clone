@@ -4,6 +4,16 @@ import { z } from "zod";
 
 export const walletBalanceSchema = z.number().positive();
 
+const getAmount = (): number => {
+  const walletBalance: number | null = LocalStorageHelper.getItem("wallet_balance");
+
+  try {
+    return walletBalanceSchema.parse(walletBalance);
+  } catch {
+    return 0;
+  }
+};
+
 export interface IWalletBalanceStore {
   amount: number;
 
@@ -11,22 +21,12 @@ export interface IWalletBalanceStore {
 }
 
 export class WalletBalanceStore implements IWalletBalanceStore {
-  public amount: number = this.getAmount();
+  public amount: number = getAmount();
 
   public constructor() {
     this.synchronize();
 
     makeAutoObservable(this);
-  }
-
-  private getAmount(): number {
-    const walletBalance: number | null = LocalStorageHelper.getItem("wallet_balance");
-
-    try {
-      return walletBalanceSchema.parse(walletBalance);
-    } catch {
-      return 0;
-    }
   }
 
   private setAmount(amount: number): void {
@@ -37,7 +37,7 @@ export class WalletBalanceStore implements IWalletBalanceStore {
 
   private synchronize(): void {
     addEventListener("storage", () => {
-      this.setAmount(this.getAmount());
+      this.setAmount(getAmount());
     });
   }
 
@@ -45,3 +45,31 @@ export class WalletBalanceStore implements IWalletBalanceStore {
     this.setAmount(this.amount + amount);
   }
 }
+
+// export const useWalletBalanceStore = (): IWalletBalanceStore => {
+//   const [amount, setAmount] = useState<number>(getAmount());
+
+//   const incrementWith = (value: number): void => {
+//     setStorageAmount(amount + value);
+//   };
+
+//   const setStorageAmount = (storageAmount: number): void => {
+//     LocalStorageHelper.setItem("wallet_balance", storageAmount);
+
+//     setAmount(storageAmount);
+//   };
+
+//   useEffect(() => {
+//     const synchronize = (): void => setStorageAmount(getAmount());
+
+//     addEventListener("storage", synchronize);
+
+//     return (): void => removeEventListener("storage", synchronize);
+//   }, []);
+
+//   return {
+//     amount,
+
+//     incrementWith,
+//   };
+// };

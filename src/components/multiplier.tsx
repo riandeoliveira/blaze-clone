@@ -60,9 +60,9 @@ const MultiplierRunning = observer((): ReactElement => {
 
     increasePow();
 
-    const intervalID = setInterval(increaseCounter, 100);
+    const intervalId = setInterval(increaseCounter, 100);
 
-    return (): void => clearInterval(intervalID);
+    return (): void => clearInterval(intervalId);
   }, [displayStore.multiplier]);
 
   return (

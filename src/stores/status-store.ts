@@ -30,3 +30,22 @@ export class StatusStore implements IStatusStore {
     this.isLoading = isLoading;
   }
 }
+
+// export const useStatusStore = (): IStatusStore => {
+//   const [isCrashed, setIsCrashed] = useState<boolean>(false);
+//   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+//   const reset = (): void => {
+//     setIsCrashed(false);
+//     setIsLoading(false);
+//   };
+
+//   return {
+//     isCrashed,
+//     isLoading,
+
+//     reset,
+//     setIsCrashed,
+//     setIsLoading,
+//   };
+// };

@@ -50,3 +50,34 @@ export class ControlPanelStore implements IControlPanelStore {
     this.setIsAutoBets(!this.isAutoBets);
   }
 }
+
+// export const useControlPanelStore = (): IControlPanelStore => {
+//   const [amount, setAmount] = useState<number | undefined>(undefined);
+//   const [autoCrashOut, setAutoCrashOut] = useState<number | undefined>(undefined);
+//   const [isAutoBets, setIsAutoBets] = useState<boolean>(false);
+//   const [totalBets, setTotalBets] = useState<number | undefined>(undefined);
+
+//   const reset = (): void => {
+//     setAmount(undefined);
+//     setAutoCrashOut(undefined);
+//     setIsAutoBets(false);
+//     setTotalBets(undefined);
+//   };
+
+//   const toggleAutoBets = (): void => {
+//     setIsAutoBets((previousState) => !previousState);
+//   };
+
+//   return {
+//     amount,
+//     autoCrashOut,
+//     isAutoBets,
+//     totalBets,
+
+//     reset,
+//     setAmount,
+//     setAutoCrashOut,
+//     setTotalBets,
+//     toggleAutoBets,
+//   };
+// };

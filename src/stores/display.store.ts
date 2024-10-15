@@ -30,3 +30,22 @@ export class DisplayStore implements IDisplayStore {
     this.multiplier = multiplier;
   }
 }
+
+// export const useDisplayStore = (): IDisplayStore => {
+//   const [limit, setLimit] = useState<number>(0);
+//   const [multiplier, setMultiplier] = useState<number>(1);
+
+//   const reset = (): void => {
+//     setLimit(0);
+//     setMultiplier(1);
+//   };
+
+//   return {
+//     limit,
+//     multiplier,
+
+//     reset,
+//     setLimit,
+//     setMultiplier,
+//   };
+// };

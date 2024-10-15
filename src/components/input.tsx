@@ -1,4 +1,5 @@
 import { Icon } from "@/assets/icons";
+import type { ParentComponentProps } from "@/types/components";
 import { cn } from "@/utils/cn";
 import _ from "lodash";
 import type { MouseEventHandler } from "react";
@@ -6,13 +7,12 @@ import { useRef, type ReactElement } from "react";
 import type { NumberFormatBaseProps } from "react-number-format";
 import { NumericFormat } from "react-number-format";
 
-interface CheckboxProps {
+interface CheckboxProps extends ParentComponentProps<string> {
   isChecked: boolean;
-  label: string;
   onCheck: MouseEventHandler<HTMLElement>;
 }
 
-const InputCheckbox = ({ onCheck, isChecked, label }: CheckboxProps): ReactElement => {
+const InputCheckbox = ({ onCheck, isChecked, children }: CheckboxProps): ReactElement => {
   return (
     <div onClick={onCheck} className="items-center cursor-pointer flex gap-4">
       <button
@@ -21,34 +21,28 @@ const InputCheckbox = ({ onCheck, isChecked, label }: CheckboxProps): ReactEleme
       >
         {isChecked && <Icon.Check />}
       </button>
-      <label htmlFor={label} className="text-white cursor-pointer text-xs font-sofia-pro">
-        {label}
+      <label htmlFor={children} className="text-white cursor-pointer text-xs font-sofia-pro">
+        {children}
       </label>
     </div>
   );
 };
 
 interface InputNumericProps extends NumberFormatBaseProps {
-  hasSuffix?: boolean;
   label: string;
   limit?: number;
-  placeholderClassName?: string;
+  suffix?: string;
   value?: number;
 }
 
 const InputNumeric = ({
-  hasSuffix = false,
+  limit = 9999,
   label,
-  limit = 999999,
-  placeholderClassName,
   value,
+  suffix,
   ...rest
 }: InputNumericProps): ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleLabelClick = (): void => {
-    inputRef.current?.focus();
-  };
 
   return (
     <div className="items-center bg-c-background rounded flex gap-1 h-12 py-1.5 px-4 w-full">
@@ -60,7 +54,7 @@ const InputNumeric = ({
         decimalSeparator=","
         fixedDecimalScale
         getInputRef={inputRef}
-        isAllowed={({ floatValue }): boolean => (floatValue ? floatValue <= limit : true)}
+        isAllowed={({ floatValue }) => (floatValue ? floatValue <= limit : true)}
         name={_.kebabCase(label)}
         thousandSeparator="."
         title={label}
@@ -71,13 +65,12 @@ const InputNumeric = ({
         className={cn(
           "text-c-light-grey text-xs font-sofia-pro font-bold absolute transition-all duration-200 peer-focus:text-[8px] peer-focus:-mt-[25px]",
           value ? "text-[8px] -mt-[25px]" : "",
-          placeholderClassName,
         )}
-        onClick={handleLabelClick}
+        onClick={() => inputRef.current?.focus()}
       >
         {label}
       </span>
-      {hasSuffix && <span className="text-c-light-grey text-sm font-semibold">R$</span>}
+      {suffix && <span className="text-c-light-grey text-sm font-semibold">{suffix}</span>}
     </div>
   );
 };

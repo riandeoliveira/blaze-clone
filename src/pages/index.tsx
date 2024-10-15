@@ -3,13 +3,9 @@ import { ControlPanel } from "@/components/control-panel";
 import { CrashHistory } from "@/components/crash-history";
 import { Display } from "@/components/display";
 import { Header } from "@/components/header";
-import { useDependencies } from "@/contexts/dependencies-context";
-import { observer } from "mobx-react-lite";
 import { type ReactElement } from "react";
 
-const Crash = observer((): ReactElement => {
-  const { tabStore } = useDependencies();
-
+const Crash = (): ReactElement => {
   return (
     <>
       <Header.Root>
@@ -31,11 +27,7 @@ const Crash = observer((): ReactElement => {
                 <ControlPanel.Tab mode="auto">Auto</ControlPanel.Tab>
                 <ControlPanel.Tab mode="free">Rodadas Grátis</ControlPanel.Tab>
               </ControlPanel.Tabs>
-              <>
-                {tabStore.mode === "normal" ? <ControlPanel.NormalBet /> : <></>}
-                {tabStore.mode === "auto" ? <ControlPanel.AutoBet /> : <></>}
-                {tabStore.mode === "free" ? <ControlPanel.FreeBet /> : <></>}
-              </>
+              <ControlPanel.Forms />
             </ControlPanel.Root>
             <div className="max-w-[747px] w-full s-1080px:max-w-none">
               <Display />
@@ -46,6 +38,6 @@ const Crash = observer((): ReactElement => {
       </main>
     </>
   );
-});
+};
 
 export default Crash;

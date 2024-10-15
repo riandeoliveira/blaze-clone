@@ -11,14 +11,18 @@ const crashHistorySchema = z
   )
   .nonempty();
 
-export interface ICrashHistoryStore {
-  list: number[];
+const getCrashPoints = (): number[] => {
+  const crashPoints: number[] | null = LocalStorageHelper.getItem("crash_history");
 
-  insert(crashPoint: number): void;
-}
+  try {
+    return crashHistorySchema.parse(crashPoints);
+  } catch {
+    return [];
+  }
+};
 
 export class CrashHistoryStore implements ICrashHistoryStore {
-  public list: number[] = this.getList();
+  public crashPoints: number[] = getCrashPoints();
 
   public constructor() {
     this.synchronize();
@@ -26,29 +30,53 @@ export class CrashHistoryStore implements ICrashHistoryStore {
     makeAutoObservable(this);
   }
 
-  private getList(): number[] {
-    const list: number[] | null = LocalStorageHelper.getItem("crash_history");
+  private setList(crashPoints: number[]): void {
+    LocalStorageHelper.setItem("crash_history", crashPoints);
 
-    try {
-      return crashHistorySchema.parse(list);
-    } catch {
-      return [];
-    }
-  }
-
-  private setList(list: number[]): void {
-    LocalStorageHelper.setItem("crash_history", list);
-
-    this.list = list;
+    this.crashPoints = crashPoints;
   }
 
   private synchronize(): void {
     addEventListener("storage", () => {
-      this.setList(this.getList());
+      this.setList(getCrashPoints());
     });
   }
 
   public insert(crashPoint: number): void {
-    this.setList([crashPoint, ...this.list]);
+    this.setList([crashPoint, ...this.crashPoints]);
   }
 }
+
+export interface ICrashHistoryStore {
+  crashPoints: number[];
+
+  insert(crashPoint: number): void;
+}
+
+// export const useCrashHistoryStore = (): ICrashHistoryStore => {
+//   const [crashPoints, setCrashPoints] = useState<number[]>(getCrashPoints());
+
+//   const insert = (crashPoint: number): void => {
+//     setStorageCrashPoints([crashPoint, ...crashPoints]);
+//   };
+
+//   const setStorageCrashPoints = (storageCrashPoints: number[]): void => {
+//     LocalStorageHelper.setItem("crash_history", storageCrashPoints);
+
+//     setCrashPoints(storageCrashPoints);
+//   };
+
+//   useEffect(() => {
+//     const synchronize = (): void => setStorageCrashPoints(getCrashPoints());
+
+//     addEventListener("storage", synchronize);
+
+//     return (): void => removeEventListener("storage", synchronize);
+//   }, []);
+
+//   return {
+//     crashPoints,
+
+//     insert,
+//   };
+// };

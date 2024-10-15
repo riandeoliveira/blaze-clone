@@ -15,7 +15,7 @@ export const CrashHistory = observer((): ReactElement => {
       </span>
       <div className="min-h-8 after:bg-corner-shadow after:content-[''] after:h-8 after:absolute after:top-[52px] after:w-6">
         <div className="flex flex-row-reverse gap-2 overflow-x-hidden">
-          {crashHistoryStore.list.slice(0, MAX_CRASH_POINTS).map((crashPoint) => (
+          {crashHistoryStore.crashPoints.slice(0, MAX_CRASH_POINTS).map((crashPoint) => (
             <span
               className={cn(
                 "items-center rounded cursor-pointer flex text-xs font-semibold h-8 tracking-wider px-1.5 font-sofia-pro",
