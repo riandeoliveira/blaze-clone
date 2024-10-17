@@ -36,7 +36,7 @@ jobs:
       - name: Get current date
         id: get_date
         run: |
-          DATE=$(date +"%B, %d, %Y")  # Formato: November, 12, 2023
+          DATE=$(date +"%B, %d, %Y")
           echo "DATE=${DATE}" >> $GITHUB_ENV
 
       - name: Create Release

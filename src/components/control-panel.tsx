@@ -1,3 +1,4 @@
+import { Icon } from "@/assets/icons";
 import { useDependencies } from "@/contexts/dependencies-context";
 import type { TabModeKey } from "@/stores/tab-store";
 import type { ParentComponentProps } from "@/types/components";
@@ -18,10 +19,10 @@ const ControlPanelAutoBet = observer((): ReactElement => {
         <div className="flex-1">
           <Input.Numeric
             label="Quantia"
+            suffixItem="R$"
             limit={walletBalanceStore.amount}
             value={controlPanelStore.amount}
             onValueChange={handleAmountChange}
-            suffix="R$"
           />
         </div>
         <Button.Secondary onClick={handleHalfBet} className="text-lg">
@@ -34,16 +35,23 @@ const ControlPanelAutoBet = observer((): ReactElement => {
       <div className="flex gap-[10px]">
         <Input.Numeric
           label="Auto Retirar"
+          suffix="x"
           value={controlPanelStore.autoCrashOut}
           onValueChange={({ floatValue }) => controlPanelStore.setAutoCrashOut(floatValue)}
         />
         <Input.Numeric
           label="Total Apostas"
+          suffixItem={<Icon.Infinity className="w-4 h-4 fill-c-light-grey" />}
           value={controlPanelStore.totalBets}
           onValueChange={({ floatValue }) => controlPanelStore.setTotalBets(floatValue)}
         />
       </div>
-      <Button.Primary className="h-12 tracking-normal w-full">Iniciar Auto-Aposta</Button.Primary>
+      <Button.Primary
+        disabled={!controlPanelStore.amount || !controlPanelStore.autoCrashOut}
+        className="h-12 tracking-normal w-full"
+      >
+        Iniciar Auto-Aposta
+      </Button.Primary>
     </>
   );
 });
@@ -73,6 +81,7 @@ const ControlPanelFreeBet = observer((): ReactElement => {
       </Input.Checkbox>
       <Input.Numeric
         label="Auto Retirar"
+        suffix="x"
         value={controlPanelStore.autoCrashOut}
         onValueChange={({ floatValue }) => controlPanelStore.setAutoCrashOut(floatValue)}
       />
@@ -117,10 +126,10 @@ const ControlPanelNormalBet = observer((): ReactElement => {
         <div className="flex-1">
           <Input.Numeric
             label="Quantia"
+            suffixItem="R$"
             limit={walletBalanceStore.amount}
             value={controlPanelStore.amount}
             onValueChange={handleAmountChange}
-            suffix="R$"
           />
         </div>
         <Button.Secondary onClick={handleHalfBet} className="text-lg">
@@ -130,11 +139,20 @@ const ControlPanelNormalBet = observer((): ReactElement => {
           2x
         </Button.Secondary>
       </div>
-      <Input.Numeric
-        label="Auto Retirar"
-        value={controlPanelStore.autoCrashOut}
-        onValueChange={({ floatValue }) => controlPanelStore.setAutoCrashOut(floatValue)}
-      />
+      <div className="flex gap-[10px]">
+        <Input.Numeric
+          label="Auto Retirar"
+          suffix="x"
+          value={controlPanelStore.autoCrashOut}
+          onValueChange={({ floatValue }) => controlPanelStore.setAutoCrashOut(floatValue)}
+        />
+        <Button.Secondary
+          onClick={() => controlPanelStore.setAutoCrashOut(undefined)}
+          className="text-xs px-5"
+        >
+          Limpar
+        </Button.Secondary>
+      </div>
       <Button.Primary disabled={!controlPanelStore.amount} className="h-12 tracking-normal w-full">
         Começar o jogo
       </Button.Primary>

@@ -5,6 +5,7 @@ import { ReactComponent as Brl } from "./brl.svg";
 import { ReactComponent as Casino } from "./casino.svg";
 import { ReactComponent as Check } from "./check.svg";
 import { ReactComponent as CrashRocket } from "./crash-rocket.svg";
+import { ReactComponent as Infinity } from "./infinity.svg";
 import { ReactComponent as Sports } from "./sports.svg";
 
 export type IconType = FunctionComponent<
@@ -20,5 +21,6 @@ export const Icon = {
   Casino,
   Check,
   CrashRocket,
+  Infinity,
   Sports,
 };

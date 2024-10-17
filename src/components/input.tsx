@@ -2,9 +2,9 @@ import { Icon } from "@/assets/icons";
 import type { ParentComponentProps } from "@/types/components";
 import { cn } from "@/utils/cn";
 import _ from "lodash";
-import type { MouseEventHandler } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 import { useRef, type ReactElement } from "react";
-import type { NumberFormatBaseProps } from "react-number-format";
+import type { NumericFormatProps } from "react-number-format";
 import { NumericFormat } from "react-number-format";
 
 interface CheckboxProps extends ParentComponentProps<string> {
@@ -28,10 +28,10 @@ const InputCheckbox = ({ onCheck, isChecked, children }: CheckboxProps): ReactEl
   );
 };
 
-interface InputNumericProps extends NumberFormatBaseProps {
+interface InputNumericProps extends NumericFormatProps {
   label: string;
   limit?: number;
-  suffix?: string;
+  suffixItem?: ReactNode;
   value?: number;
 }
 
@@ -39,7 +39,7 @@ const InputNumeric = ({
   limit = 9999,
   label,
   value,
-  suffix,
+  suffixItem,
   ...rest
 }: InputNumericProps): ReactElement => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +58,7 @@ const InputNumeric = ({
         name={_.kebabCase(label)}
         thousandSeparator="."
         title={label}
-        value={value === 0 ? 0.01 : value}
+        value={!value ? "" : value === 0 ? 0.01 : value}
         {...rest}
       />
       <span
@@ -70,7 +70,7 @@ const InputNumeric = ({
       >
         {label}
       </span>
-      {suffix && <span className="text-c-light-grey text-sm font-semibold">{suffix}</span>}
+      {suffixItem && <span className="text-c-light-grey text-sm font-semibold">{suffixItem}</span>}
     </div>
   );
 };
