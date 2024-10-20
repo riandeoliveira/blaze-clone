@@ -21,6 +21,12 @@ const getCrashPoints = (): number[] => {
   }
 };
 
+export interface ICrashHistoryStore {
+  crashPoints: number[];
+
+  insert(crashPoint: number): void;
+}
+
 export class CrashHistoryStore implements ICrashHistoryStore {
   public crashPoints: number[] = getCrashPoints();
 
@@ -45,12 +51,6 @@ export class CrashHistoryStore implements ICrashHistoryStore {
   public insert(crashPoint: number): void {
     this.setList([crashPoint, ...this.crashPoints]);
   }
-}
-
-export interface ICrashHistoryStore {
-  crashPoints: number[];
-
-  insert(crashPoint: number): void;
 }
 
 // export const useCrashHistoryStore = (): ICrashHistoryStore => {

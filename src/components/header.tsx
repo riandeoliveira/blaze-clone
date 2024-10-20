@@ -15,8 +15,6 @@ const HeaderRoot = observer(({ children }: HeaderRootProps): ReactElement => {
 
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
 
-  const handleDeposit = (): void => walletBalanceStore.incrementWith(10);
-
   useEffect(() => {
     const mediaQuery: MediaQueryList = matchMedia("(max-width: 600px)");
 
@@ -44,9 +42,7 @@ const HeaderRoot = observer(({ children }: HeaderRootProps): ReactElement => {
               <span className="text-sm">{toBRL(walletBalanceStore.amount)}</span>
               <Icon.Brl className="w-4" />
             </div>
-            <Button.Primary onClick={handleDeposit} className="s-600px:w-[82px]">
-              Depositar
-            </Button.Primary>
+            <Button.Primary className="s-600px:w-[82px]">Depositar</Button.Primary>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import type { TabModeKey } from "@/stores/tab-store";
 import type { ParentComponentProps } from "@/types/components";
 import { cn } from "@/utils/cn";
 import { observer } from "mobx-react-lite";
-import type { ReactElement } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import type { NumberFormatValues } from "react-number-format";
 import { Button } from "./button";
 import { Input } from "./input";
@@ -116,9 +116,50 @@ const ControlPanelFreeBet = observer((): ReactElement => {
   );
 });
 
+const StartGameButtonContent = observer((): ReactElement => {
+  const { statusStore, displayStore, controlPanelStore } = useDependencies();
+
+  const [multipliedAmount, setMultipliedAmount] = useState<number>(0);
+
+  useEffect(() => {
+    if (controlPanelStore.amount) {
+      const amountToEarn: number = controlPanelStore.amount * displayStore.multiplier;
+
+      setMultipliedAmount(parseFloat(amountToEarn.toFixed(2)));
+    }
+  }, [controlPanelStore.amount, displayStore.multiplier]);
+
+  if (statusStore.isInGameQueue) return <>Na fila (clique para cancelar)</>;
+  if (statusStore.isPlaying) return <>Retirar {multipliedAmount} BRL</>;
+  if (statusStore.isWaitingToStart) return <>Esperando</>;
+
+  return <>Começar o jogo</>;
+});
+
 const ControlPanelNormalBet = observer((): ReactElement => {
-  const { walletBalanceStore, controlPanelStore } = useDependencies();
+  const { walletBalanceStore, statusStore, controlPanelStore, displayStore } = useDependencies();
   const { handleAmountChange, handleHalfBet, handleDoubleBet } = useControlPanel();
+
+  const handleButtonClick = (): void => {
+    if (!controlPanelStore.amount) return;
+
+    if (statusStore.isPlaying) {
+      const multipliedAmount: number = controlPanelStore.amount * displayStore.multiplier;
+      const earnedAmount: number = parseFloat(multipliedAmount.toFixed(2));
+
+      displayStore.setEarnedAmount(earnedAmount);
+      displayStore.setMultiplierOnWinning(displayStore.multiplier);
+
+      statusStore.setIsPlaying(false);
+      statusStore.setIsWinner(true);
+
+      walletBalanceStore.incrementWith(earnedAmount);
+
+      return;
+    }
+
+    statusStore.setIsInGameQueue(!statusStore.isInGameQueue);
+  };
 
   return (
     <>
@@ -153,8 +194,17 @@ const ControlPanelNormalBet = observer((): ReactElement => {
           Limpar
         </Button.Secondary>
       </div>
-      <Button.Primary disabled={!controlPanelStore.amount} className="h-12 tracking-normal w-full">
-        Começar o jogo
+      <Button.Primary
+        disabled={
+          !controlPanelStore.amount ||
+          statusStore.isWaitingToStart ||
+          statusStore.isCrashed ||
+          statusStore.isLoading
+        }
+        onClick={handleButtonClick}
+        className="h-12 tracking-normal w-full"
+      >
+        <StartGameButtonContent />
       </Button.Primary>
     </>
   );

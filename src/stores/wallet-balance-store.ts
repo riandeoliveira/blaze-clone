@@ -17,6 +17,7 @@ const getAmount = (): number => {
 export interface IWalletBalanceStore {
   amount: number;
 
+  decrementWith(amount: number): void;
   incrementWith(amount: number): void;
 }
 
@@ -30,15 +31,21 @@ export class WalletBalanceStore implements IWalletBalanceStore {
   }
 
   private setAmount(amount: number): void {
-    LocalStorageHelper.setItem("wallet_balance", amount);
+    const incomingAmount: number = parseFloat(amount.toFixed(2));
 
-    this.amount = amount;
+    LocalStorageHelper.setItem("wallet_balance", incomingAmount);
+
+    this.amount = incomingAmount;
   }
 
   private synchronize(): void {
     addEventListener("storage", () => {
       this.setAmount(getAmount());
     });
+  }
+
+  public decrementWith(amount: number): void {
+    this.setAmount(this.amount - amount);
   }
 
   public incrementWith(amount: number): void {

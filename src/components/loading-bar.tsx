@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactElement } from "react";
 
 export const LoadingBar = observer((): ReactElement => {
-  const { statusStore } = useDependencies();
+  const { displayStore, statusStore } = useDependencies();
 
   const [timer, setTimer] = useState<number>(6);
 
@@ -18,7 +18,12 @@ export const LoadingBar = observer((): ReactElement => {
       setTimer(0);
       clearInterval(interval);
 
+      displayStore.setEarnedAmount(0);
+      displayStore.setMultiplierOnWinning(0);
+
       statusStore.setIsLoading(false);
+      statusStore.setIsWaitingToStart(false);
+      statusStore.setIsWinner(false);
     }, 10);
 
     return (): void => clearInterval(interval);
