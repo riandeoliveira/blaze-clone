@@ -1,5 +1,63 @@
 {
   //
+  // Color Highlight
+  //
+  "color-highlight.matchWords": true,
+  //
+  // Code Spell Checker
+  //
+  "cSpell.language": "en,pt",
+  //
+  // Diff Editor
+  //
+  "diffEditor.ignoreTrimWhitespace": true,
+  //
+  // Editor
+  //
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "comments": true,
+    "other": true,
+    "strings": true
+  },
+  //
+  // ESLint
+  //
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  //
+  // Files
+  //
+  "files.autoGuessEncoding": true,
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": false,
+  //
+  // Git
+  //
+  "git.allowNoVerifyCommit": false,
+  "git.confirmEmptyCommits": false,
+  "git.enableSmartCommit": true,
+  "git.showPushSuccessNotification": true,
+  "git.supportCancellation": true,
+  //
+  // JavaScript
+  //
+  "javascript.suggest.completeFunctionCalls": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  //
   // Languages
   //
   "[css]": {
@@ -9,7 +67,7 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -17,8 +75,11 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[scss]": {
-    "editor.defaultFormatter": "vscode.css-language-features"
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "mrmlnc.vscode-postcss-sorting"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -30,73 +91,18 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   //
-  // Diff Editor
-  //
-  "diffEditor.ignoreTrimWhitespace": true,
-  //
-  // Editor
-  //
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
-  },
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.fontFamily": "JetBrains Mono, Consolas",
-  "editor.formatOnSave": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.insertSpaces": true,
-  "editor.minimap.size": "fit",
-  "editor.quickSuggestions": {
-    "comments": true,
-    "other": true,
-    "strings": true
-  },
-  "editor.renderWhitespace": "all",
-  "editor.smoothScrolling": true,
-  "editor.suggestSelection": "first",
-  "editor.tabSize": 2,
-  "editor.wordWrap": "on",
-  //
-  // ESLint
-  //
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  //
-  // Explorer
-  //
-  "explorer.compactFolders": false,
-  //
-  // Files
-  //
-  "files.autoSave": "afterDelay",
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": false,
-  //
   // PostCSS
   //
   "postcssSorting.config": {
     "properties-order": "alphabetical"
   },
   //
-  // Stylelint
+  // Terminal
   //
-  "stylelint.validate": [
-    "css",
-    "postcss",
-    "sass",
-    "scss"
-  ],
+  "terminal.integrated.copyOnSelection": true,
   //
   // TODO Highlight
   //
-  "todohighlight.defaultStyle": {
-    "borderRadius": "4px"
-  },
   "todohighlight.keywords": [
     {
       "backgroundColor": "#FF6D00",
@@ -109,6 +115,10 @@
       "borderRadius": "4px",
       "color": "#fff",
       "text": "FEAT:",
+    },
+    {
+      "borderRadius": "4px",
+      "text": "FIXME:",
     },
     {
       "backgroundColor": "#D50000",
@@ -127,18 +137,15 @@
       "borderRadius": "4px",
       "color": "#fff",
       "text": "REFACT:",
-    }
+    },
+    {
+      "borderRadius": "4px",
+      "text": "TODO:",
+    },
   ],
   //
   // TypeScript
   //
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  //
-  // Workbench
-  //
-  "workbench.list.smoothScrolling": true,
-  "workbench.reduceMotion": "off",
 }

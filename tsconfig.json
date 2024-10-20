@@ -1,34 +1,34 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowSyntheticDefaultImports": true,
+    "allowJs": false,
     "allowUnreachableCode": false,
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "incremental": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "lib": [
-      "DOM",
       "DOM.Iterable",
+      "DOM",
       "ESNext"
     ],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "newLine": "lf",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedParameters": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2020",
-    "useDefineForClassFields": true
+    "target": "ES6"
   },
   "exclude": [
     "build",
@@ -36,8 +36,7 @@
     "node_modules"
   ],
   "include": [
-    "cypress",
     "src",
     "vite.config.ts"
-  ],
+  ]
 }
