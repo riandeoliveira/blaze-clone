@@ -52,29 +52,5 @@
     "typescript-plugin-css-modules": "^5.1.0",
     "vite": "^4.5.5",
     "vite-tsconfig-paths": "^4.3.2"
-  },
-  "metadata": {
-    "stack": [
-      "js",
-      "react",
-      "tailwind",
-      "ts",
-      "vite"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/riandeoliveira/blaze-clone/refs/heads/main/.github/assets/thumbnail.png",
-    "repositoryUrl": "https://github.com/riandeoliveira/blaze-clone",
-    "projectUrl": "https://blaze-clone-alpha.vercel.app/",
-    "isPrivate": false,
-    "isNew": false,
-    "info": {
-      "enUs": {
-        "fullName": "Blaze Clone",
-        "description": "A functional clone of the Crash game from the Blaze betting platform, with a responsive layout adaptable to mobile devices."
-      },
-      "ptBr": {
-        "fullName": "Clone da Blaze",
-        "description": "Clone funcional do jogo Crash da plataforma de apostas Blaze, com um layout responsivo e adaptável para dispositivos móveis."
-      }
-    }
   }
 }
